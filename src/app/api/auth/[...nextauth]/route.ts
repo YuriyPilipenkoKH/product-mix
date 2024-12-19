@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-// import { authConfig } from "@/app/auth.config"
+import { authConfig } from "@/app/auth.config"
 import { prisma } from "@/lib/prisma"
 import { z } from "zod"
 import bcrypt from "bcrypt"
@@ -26,6 +26,11 @@ export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "example@example.com" },
+        password: { label: "Password", type: "password" }
+      },
       async authorize(credentials) {
         const parsedCredentials = loginSchema.safeParse(credentials)
 
