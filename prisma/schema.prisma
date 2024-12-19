@@ -15,7 +15,7 @@ model User {
   password     String     
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
-  collections  Category[] // One-to-many relationship with Collection
+  categories  Category[] // One-to-many relationship with Collection
 }
 
 model Product {
