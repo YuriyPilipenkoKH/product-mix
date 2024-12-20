@@ -1,9 +1,10 @@
-import NextAuth from "next-auth"; // Default import
+import NextAuth, { Session } from "next-auth"; // Default import
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { compare } from "bcrypt-ts";
 import prisma from "@/lib/prisma";
 import { connectMongoDB } from "@/lib/mongo";
+import { JWT } from "next-auth/jwt";
 
 export const authOptions = {
   providers: [
@@ -72,10 +73,14 @@ export const authOptions = {
     signOut: "/login", // The page where the user will be redirected after logging out
   },
   callbacks: {
-    async session({ session, token }) {
-      if (token?.id) {
-        session.user.id = token.id as string;
-        session.user.role = token.role as string;
+    async session({ session, token }: { session: Session; token: JWT }) {
+      if (session.user) {
+        if (token?.id) {
+          session.user.id = token.id as string;
+        }
+        if (token?.role) {
+          session.user.role = token.role as string;
+        }
       }
       return session;
     },
