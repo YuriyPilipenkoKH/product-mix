@@ -1,10 +1,11 @@
-import NextAuth, { Session } from "next-auth"; // Default import
+import NextAuth, { Session , Account, User as NextAuthUser} from "next-auth"; 
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { compare } from "bcrypt-ts";
 import prisma from "@/lib/prisma";
 import { connectMongoDB } from "@/lib/mongo";
 import { JWT } from "next-auth/jwt";
+import { User } from "@prisma/client";
 
 export const authOptions = {
   providers: [
@@ -84,14 +85,20 @@ export const authOptions = {
       }
       return session;
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
         token.id = user.id;
         token.role = user.role; // Include role in the token
       }
       return token;
     },
-    async signIn({ user, account }) {
+    async signIn({
+      user,
+      account,
+    }: {
+      user: NextAuthUser;
+      account: Account | null;
+    }){
       if (account?.provider === "google") {
         try {
           const allowedEmails = process.env.ALLOWED_EMAILS?.split(",") || [];
@@ -118,8 +125,8 @@ export const authOptions = {
               data: {
                 email: user.email,
                 name: user.name || "Unknown",
-                imageUrl: user.image || null,
                 role: "user", // Default role
+                password: "placeholder_password", // Use a placeholder
               },
             });
           }
