@@ -1,4 +1,4 @@
-import type  NextAuthConfig  from "next-auth"
+
 import type { JWT } from "next-auth/jwt"
 
 export const authConfig = {
