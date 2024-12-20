@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { compare } from "bcrypt-ts";
 import prisma from "@/lib/prisma";
+import { connectMongoDB } from "@/lib/mongo";
 
 export const authOptions = {
   providers: [
@@ -25,16 +26,24 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const email = credentials?.email;
-        const password = credentials?.password;
+        const email = credentials.email as string | undefined;
+        const password = credentials.password as string | undefined;
 
         if (!email || !password) {
           throw new Error("Please provide both email and password.");
         }
+        await connectMongoDB();
 
         // Fetch the user from the database
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findFirst({
           where: { email: email }, // Ensure 'email' is passed here
+          select: {
+            id: true, 
+            name:  true, 
+            email: true, 
+            password: true, 
+            role: true 
+            },
         });
 
         if (!user || !user.password) {
