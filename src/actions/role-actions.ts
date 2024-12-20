@@ -1,7 +1,7 @@
 'use server'
 
-import { auth } from "@/app/api/auth/[...nextauth]/route"
-import { prisma } from "@/lib/prisma"
+import { auth} from "@/app/api/auth/[...nextauth]/route"
+import prisma from "@/lib/prisma"
 import { z } from "zod"
 
 const actionSchema = z.object({
