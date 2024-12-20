@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions, getServerSession } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { authConfig } from "@/app/auth.config"
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient , User as PrismaUser } from '@prisma/client'
 import { z } from "zod"
 import bcrypt from "bcrypt"
 
@@ -35,44 +35,43 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        const parsedCredentials = loginSchema.safeParse(credentials)
-
-        if (!parsedCredentials.success) {
-          return null
-        }
-
-        const { email, password } = parsedCredentials.data
-        const user = await getUser(email)
-        if (!user) return null
-
-        const passwordsMatch = await bcrypt.compare(password, user.password)
-
+        const parsedCredentials = loginSchema.safeParse(credentials);
+        if (!parsedCredentials.success) return null;
+      
+        const { email, password } = parsedCredentials.data;
+        const user = await prisma.user.findUnique({ where: { email } });
+        if (!user) return null;
+      
+        const passwordsMatch = await bcrypt.compare(password, user.password);
         if (passwordsMatch) {
-          // Return user without the password
-          const { password: _, ...userWithoutPassword } = user
-          return userWithoutPassword
+          // Remove sensitive fields like `password` before returning
+          const { password: _, ...safeUser } = user;
+          return safeUser; // Matches Prisma's User type
         }
-        
-        return null
+      
+        return null;
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role
-        token.id = user.id
+        token.id = user.id;
+        token.role = user.role;
       }
-      return token
+      return token;
     },
     async session({ session, token }) {
-      if (session.user) {
-        session.user.role = token.role as string
-        session.user.id = token.id as string
-      }
-      return session
+      session.user = {
+        id: user.id,
+        name: PrismaUser.name,
+        email: PrismaUser.email,
+        role: PrismaUser.role, // Manually ensure this matches Prisma's schema
+      };
+      return session;
     },
-  },
+  }
+  ,
 }
 
 const handler = NextAuth(authOptions)

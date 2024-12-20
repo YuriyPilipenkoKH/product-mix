@@ -40,7 +40,7 @@ export async function performRoleBasedAction(formData: FormData) {
         }
       }
       break
-    case 'manager':
+    case 'admin':
       if (action === 'approveRequest') {
         // Perform manager-specific action
         // For this example, we'll just return a success message
