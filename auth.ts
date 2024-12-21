@@ -1,6 +1,7 @@
 import NextAuth, { Session , Account, User as NextAuthUser} from "next-auth"; 
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
 import { compare } from "bcrypt-ts";
 import prisma from "@/lib/prisma";
 import { connectMongoDB } from "@/lib/mongo";
@@ -22,6 +23,10 @@ export const authOptions = {
         };
       },
     }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+  }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -38,7 +43,7 @@ export const authOptions = {
         await connectMongoDB();
 
         // Fetch the user from the database
-        const user = await prisma.user.findFirst({
+        const user = await prisma.user.findUnique({
           where: { email },
           select: {
             id: true,
@@ -46,8 +51,8 @@ export const authOptions = {
             email: true,
             password: true,
             role: true,
-            createdAt: true,
-            updatedAt: true, // Include these fields
+            // createdAt: true,
+            // updatedAt: true, // Include these fields
           },
         });
 
@@ -69,8 +74,6 @@ export const authOptions = {
           email: user.email,
           role: user.role,
           password: user.password, // Include password
-          createdAt: user.createdAt,
-          updatedAt: user.updatedAt,
         };
       },
     }),
