@@ -18,6 +18,7 @@ export const authOptions = {
           name: profile.name,
           email: profile.email,
           image: profile.picture,
+          role: "user", // Default role for Google users
         };
       },
     }),
@@ -38,14 +39,16 @@ export const authOptions = {
 
         // Fetch the user from the database
         const user = await prisma.user.findFirst({
-          where: { email: email }, // Ensure 'email' is passed here
+          where: { email },
           select: {
-            id: true, 
-            name:  true, 
-            email: true, 
-            password: true, 
-            role: true 
-            },
+            id: true,
+            name: true,
+            email: true,
+            password: true,
+            role: true,
+            createdAt: true,
+            updatedAt: true, // Include these fields
+          },
         });
 
         if (!user || !user.password) {
@@ -65,6 +68,9 @@ export const authOptions = {
           name: user.name,
           email: user.email,
           role: user.role,
+          password: user.password, // Include password
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
         };
       },
     }),
@@ -96,7 +102,7 @@ export const authOptions = {
       user,
       account,
     }: {
-      user: NextAuthUser;
+      user: NextAuthUser; // Use the Prisma User type here
       account: Account | null;
     }){
       if (account?.provider === "google") {
@@ -126,7 +132,9 @@ export const authOptions = {
                 email: user.email,
                 name: user.name || "Unknown",
                 role: "user", // Default role
-                password: "placeholder_password", // Use a placeholder
+                password: "placeholder_password", // Use a placeholder password
+                createdAt: new Date(), // Ensure createdAt is included
+                updatedAt: new Date(), // Ensure updatedAt is included
               },
             });
           }
