@@ -1,4 +1,4 @@
-import NextAuth, { Session , Account, User as NextAuthUser} from "next-auth"; 
+import NextAuth, { Account, User as NextAuthUser, Session} from "next-auth"; 
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
@@ -13,15 +13,15 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-      profile(profile) {
-        return {
-          id: profile.id,
-          name: profile.name,
-          email: profile.email,
-          image: profile.picture,
-          role: "user", // Default role for Google users
-        };
-      },
+      // profile(profile) {
+      //   return {
+      //     id: profile.id,
+      //     name: profile.name,
+      //     email: profile.email,
+      //     image: profile.picture,
+      //     role: "user", // Default role for Google users
+      //   };
+      // },
     }),
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -105,7 +105,7 @@ export const authOptions = {
       user,
       account,
     }: {
-      user: NextAuthUser; // Use the Prisma User type here
+      user: User; // Use the Prisma User type here
       account: Account | null;
     }){
       if (account?.provider === "google") {
@@ -136,8 +136,8 @@ export const authOptions = {
                 name: user.name || "Unknown",
                 role: "user", // Default role
                 password: "placeholder_password", // Use a placeholder password
-                createdAt: new Date(), // Ensure createdAt is included
-                updatedAt: new Date(), // Ensure updatedAt is included
+                // createdAt: new Date(), // Ensure createdAt is included
+                // updatedAt: new Date(), // Ensure updatedAt is included
               },
             });
           }
