@@ -39,14 +39,14 @@ const FormWrapper = ({
         <div></div>
        )} 
        <div className='flex w-full justify-center items-center mt-4'>
-          <button
+          {/* <button
             href={backButtonHref}
             label={backButtonLabel}> 
             {(formName === 'loginForm') 
             ? <FaRegistered/>
             : <LuKeyRound/>}
               
-            </button >
+            </button > */}
        </div>
     </div>
   )
