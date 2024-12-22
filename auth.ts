@@ -1,4 +1,4 @@
-import NextAuth, { Account, Session, User,} from "next-auth"; 
+import NextAuth, { Account, Session, User, } from "next-auth"; 
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
@@ -8,7 +8,7 @@ import { connectMongoDB } from "@/lib/mongo";
 import { JWT } from "next-auth/jwt";
 
 
-export const authOptions = {
+export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID!,
@@ -150,9 +150,10 @@ export const authOptions = {
     },
   },
   secret: process.env.AUTH_SECRET,
-};
+})
 
 // const handler = NextAuth(authOptions);
-
 // export { handler as GET, handler as POST };
+
+
 
