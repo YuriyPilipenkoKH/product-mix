@@ -1,4 +1,4 @@
-import { connectMongoDB } from "@/lib/mongo"
+import { connectMongoDB, disconnectMongoDB } from "@/lib/mongo"
 import prisma from "@/lib/prisma"
 import { NextResponse } from "next/server"
 import { hash} from "bcrypt-ts";
@@ -21,15 +21,25 @@ export const POST = async (req: Request) => {
           password: hashedPassword
         }
       })
+      console.log(name,email,hashedPassword);
+      
+      
     return NextResponse.json(
-      {newUser},
+      {data:{
+        name,
+        email, 
+        password: hashedPassword
+      }},
       {status: 201}
     )  
   } 
   catch (error) {
     return NextResponse.json(
-      { message: "Failed to register"},
+      { message: "Server error"},
       { status: 500 }
     )
+    }
+    finally{
+      await disconnectMongoDB()
     }
 }
