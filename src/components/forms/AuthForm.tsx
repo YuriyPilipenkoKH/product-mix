@@ -86,20 +86,27 @@ try {
       
     }
   }
-} catch (error) {
-  const errorMessage =
-    error instanceof Error ? error.message : 'An unknown error occurred';
-  setLogError(errorMessage);
-  toast.error(`An error occurred: ${errorMessage}`);
-}
-};
-const handleInputChange =   (field: keyof LogInput | keyof RegInput) => {
-  if(logError) setLogError('')
-    console.log(field);
-    
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
+    setLogError(errorMessage);
+    toast.error(`An error occurred: ${errorMessage}`);
   }
+  };
+  const handleInputChange =   (field: keyof LogInput | keyof RegInput) => {
+    if(logError) setLogError('')
+      console.log(field);
+      
+    }
   const onInvalid = () => {
     setLogError('Please fill in all required fields');
+    };
+
+  
+    const isRegisterErrors = (
+      errors: Partial<FieldErrors <LogInput | RegInput>>
+    ): errors is Partial <FieldErrors<RegInput>> => {
+      return 'name' in errors;
     };
 
 return(
