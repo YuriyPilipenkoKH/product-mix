@@ -1,5 +1,5 @@
+'use client'
 import { AuthFormBaseTypes } from "@/types/formTypes"
-
 
 interface AuthFormProps {
   formProps: AuthFormBaseTypes
@@ -8,7 +8,7 @@ interface AuthFormProps {
 
 const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
 return(
-  <div></div>
+  <div>AuthForm</div>
 )
 }
 export default AuthForm

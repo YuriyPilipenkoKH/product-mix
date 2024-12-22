@@ -5,7 +5,7 @@ import {hashSync} from 'bcrypt-ts'
 import { signIn } from "../../auth";
 import { connectMongoDB } from "@/lib/mongo";
 
-export async function register (formData: FormData)  {
+export async function registerUser (formData: FormData)  {
   const name = formData.get('name') as string | null; // Explicitly cast as string | null
   const email = formData.get('email') as string | null;
   const password = formData.get('password') as string | null;
