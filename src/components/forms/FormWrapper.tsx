@@ -7,6 +7,7 @@ import React from 'react'
 import { FaRegistered } from "react-icons/fa";
 import { LuKeyRound } from "react-icons/lu";
 import FormHeader from './FormHeader';
+import { BtnX } from '../Button/Button';
 
 interface FormWrapperProps {
   children: React.ReactNode;
@@ -36,17 +37,16 @@ const FormWrapper = ({
         </div>
        {showSocial && (
         // <SocialLogin/>
-        <div></div>
+        <div>SocialLogin</div>
        )} 
        <div className='flex w-full justify-center items-center mt-4'>
-          {/* <button
+          <BtnX
             href={backButtonHref}
             label={backButtonLabel}> 
             {(formName === 'loginForm') 
             ? <FaRegistered/>
             : <LuKeyRound/>}
-              
-            </button > */}
+          </BtnX >
        </div>
     </div>
   )
