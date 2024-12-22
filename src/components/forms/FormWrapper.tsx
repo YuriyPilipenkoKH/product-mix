@@ -37,7 +37,7 @@ const FormWrapper = ({
         </div>
        {showSocial && (
         // <SocialLogin/>
-        <div>SocialLogin</div>
+        <></>
        )} 
        <div className='flex w-full justify-center items-center mt-4'>
           <BtnX

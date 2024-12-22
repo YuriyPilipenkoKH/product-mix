@@ -9,6 +9,9 @@ import { registerUser } from '@/actions/register-user'
 import { loginUser } from '@/actions/login-user'
 import toast from 'react-hot-toast'
 import capitalize from '@/lib/capitalize'
+import FormWrapper from './FormWrapper'
+import { CgCloseO } from 'react-icons/cg'
+import { FlatBtn } from '../Button/Button'
 
 interface AuthFormProps {
   formProps: AuthFormBaseTypes
@@ -110,10 +113,73 @@ try {
     };
 
 return(
-  <div>
-    <h2>{formName}</h2>
-    <h2>{titleLabel}</h2>
-  </div>
+  <FormWrapper  formProps={formProps} >
+  <form
+    onSubmit={handleSubmit(onSubmit, onInvalid)}
+    className='flex flex-col gap-3 items-center'
+    autoComplete="off"
+    noValidate>
+  {(formName === 'loginForm') && csrfToken && <input type="hidden" name="csrfToken" value={csrfToken} />}
+  {(formName === 'registerForm') && (
+  <>
+    <label 
+    className="input input-bordered flex items-center gap-2">
+    <input 
+    className="grow"
+    {...register('name', { onChange: handleInputChange })}
+      placeholder=	{( isSubmitting ) 
+      ? "Processing" 
+      : 'name'}
+    />
+    </label>
+  </>
+  )}
+  <label 
+  className="input input-bordered flex items-center gap-2">
+  <input
+  className="grow" 
+  {...register('email', { onChange: handleInputChange })}
+    placeholder=	{( isSubmitting ) 
+    ? "Processing" 
+    : 'email'}
+  />
+  </label>
+  <label 
+  className="input input-bordered flex items-center gap-2">
+    <input
+    className="grow"
+       {...register('password')}
+       onChange={(e) => {
+         register('password').onChange(e);
+         handleInputChange('password');
+       }}
+      placeholder={isSubmitting ? "Processing" : 'Password'}
+      />
+  </label>
+  <button
+    className='mt-auto btn btn-active btn-neutral'
+    type='submit'
+    disabled={isSubmitting || !isDirty || !isValid || !!logError}
+        >
+    { isLoading  ? "Sending.." : (formName === 'registerForm' )
+      ? 'Register'  : 'Login'}
+  </button>
+    {(isRegisterErrors(errors)  || errors.email || errors.password || logError) && (
+      <div className="autherror w-full">
+        { isRegisterErrors(errors) && errors.name && <div>{errors.name.message}</div>}
+        { !isRegisterErrors(errors) && errors.email && <div>{errors.email.message}</div>}
+        { !isRegisterErrors(errors) && !errors.email && errors.password && <div>{errors.password.message}</div>}
+        { !isRegisterErrors(errors) && !errors.email && !errors.password && logError && <div>{logError}</div>}
+        <FlatBtn onClick={() => {
+          setLogError('')
+          reset()
+          }}>
+          <CgCloseO size={30} />
+        </FlatBtn>
+      </div>
+    )}
+</form>
+</FormWrapper>
 )
 }
 export default AuthForm

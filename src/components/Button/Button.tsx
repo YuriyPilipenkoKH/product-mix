@@ -23,3 +23,13 @@ import { useRouter } from 'next/navigation';
       {children}
     </button>;
   };
+
+  export const FlatBtn: React.FC<ButtonProps> = ({ children, ...props }) => {
+    return(
+     <button 
+     className='FlatBtn'
+     type='button' {...props}>
+       {children}
+       </button>
+    )
+};
