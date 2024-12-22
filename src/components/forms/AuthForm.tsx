@@ -100,15 +100,14 @@ try {
   const onInvalid = () => {
     setLogError('Please fill in all required fields');
     };
+
     useEffect(() => {
       const fetchCsrfToken = async () => {
         const token = await retrieveToken(); 
         setCsrfToken(token); 
       };
-  
-      fetchCsrfToken();
+        fetchCsrfToken();
     }, []);
-
   
     const isRegisterErrors = (
       errors: Partial<FieldErrors <LogInput | RegInput>>
