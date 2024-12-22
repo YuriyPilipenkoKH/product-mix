@@ -1,7 +1,8 @@
 import { connectMongoDB, disconnectMongoDB } from "@/lib/mongo"
 import prisma from "@/lib/prisma"
 import { NextResponse } from "next/server"
-import { hash} from "bcrypt-ts";
+import {  hashSync} from "bcrypt-ts";
+
 
 export const POST = async (req: Request) => {
   try {
@@ -12,7 +13,7 @@ export const POST = async (req: Request) => {
         {status: 402}
       )
     }
-    const hashedPassword = await hash(password,10)
+    const hashedPassword =  hashSync(password)
     await connectMongoDB()
     const newUser = prisma.user.create({
       data:{

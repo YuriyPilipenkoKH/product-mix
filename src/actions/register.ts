@@ -3,6 +3,7 @@
 import prisma from "@/lib/prisma";
 import {hashSync} from 'bcrypt-ts'
 import { signIn } from "../../auth";
+import { connectMongoDB } from "@/lib/mongo";
 
 export async function register (formData: FormData)  {
   const name = formData.get('name') as string | null; // Explicitly cast as string | null
@@ -15,6 +16,7 @@ export async function register (formData: FormData)  {
   }
 
   try {
+    await connectMongoDB();
   // Check if a user already exists with the same email
   const existingUser = await prisma.user.findUnique({
     where: { email },
@@ -54,6 +56,5 @@ export async function register (formData: FormData)  {
     const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
     return { success: false, error: errorMessage }
   }
-
 
 };
