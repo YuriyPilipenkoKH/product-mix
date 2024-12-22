@@ -18,7 +18,6 @@ interface AuthFormProps {
   formProps: AuthFormBaseTypes
 }
 
-
 const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
   const {
     formName,

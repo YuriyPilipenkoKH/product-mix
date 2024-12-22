@@ -1,5 +1,4 @@
-// import LoginForm from '@/app/components/forms/LoginForm'
-// import { getSession } from '@/lib/getSession'
+
 import AuthForm from '@/components/forms/AuthForm'
 import { LoginFormProps } from '@/data/formProps'
 import { getSession } from '@/lib/getSession'
