@@ -13,15 +13,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-      // profile(profile) {
-      //   return {
-      //     id: profile.id,
-      //     name: profile.name,
-      //     email: profile.email,
-      //     image: profile.picture,
-      //     role: "user", // Default role for Google users
-      //   };
-      // },
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+          role: "user", // Default role for Google users
+        };
+      },
     }),
     GithubProvider({
       clientId: process.env.GITHUB_ID,
