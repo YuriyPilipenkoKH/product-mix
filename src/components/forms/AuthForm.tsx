@@ -45,6 +45,9 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
       isSubmitting,
       isLoading 
   } = formState
+  const isRegisterData = (data: LogInput | RegInput): data is RegInput => {
+    return (data as RegInput).name !== undefined;
+  };
 return(
   <div>
     <h2>{formName}</h2>
