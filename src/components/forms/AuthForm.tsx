@@ -93,8 +93,7 @@ try {
   };
   const handleInputChange =   (field: keyof LogInput | keyof RegInput) => {
     if(logError) setLogError('')
-      console.log(field);
-      
+     
     }
   const onInvalid = () => {
     setLogError('Please fill in all required fields');
