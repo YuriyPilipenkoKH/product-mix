@@ -2,7 +2,7 @@
 import { LogInput, LoginSchema, RegInput, RegisterSchema } from '@/models/auth'
 import { AuthFormBaseTypes } from "@/types/formTypes"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FieldErrors, useForm } from 'react-hook-form'
 import { registerUser } from '@/actions/register-user'
@@ -12,6 +12,7 @@ import capitalize from '@/lib/capitalize'
 import FormWrapper from './FormWrapper'
 import { CgCloseO } from 'react-icons/cg'
 import { FlatBtn } from '../Button/Button'
+import { retrieveToken } from '@/lib/retrieveToken'
 
 interface AuthFormProps {
   formProps: AuthFormBaseTypes
@@ -99,6 +100,14 @@ try {
   const onInvalid = () => {
     setLogError('Please fill in all required fields');
     };
+    useEffect(() => {
+      const fetchCsrfToken = async () => {
+        const token = await retrieveToken(); 
+        setCsrfToken(token); 
+      };
+  
+      fetchCsrfToken();
+    }, []);
 
   
     const isRegisterErrors = (
