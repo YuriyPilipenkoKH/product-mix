@@ -1,5 +1,6 @@
 'use client'
 
+import { logoutUser } from '@/actions/logout-user';
 import { useRouter } from 'next/navigation';
 
   interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,3 +34,25 @@ import { useRouter } from 'next/navigation';
        </button>
     )
 };
+
+export const LogoutButton = () => {
+  const handleLogout = async () => {
+    await logoutUser();
+  };
+
+  return (
+    <button 
+    className="btn btn-primary"
+    onClick={handleLogout}
+     >
+      Logout
+    </button>
+  );
+};
+
+
+
+
+
+
+

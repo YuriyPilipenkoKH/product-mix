@@ -1,3 +1,4 @@
+import { LogoutButton } from '@/components/Button/Button';
 import { ReactNode } from 'react'
 
 interface Props {
@@ -9,7 +10,7 @@ function Layout({ children }: Props) {
     <div className='h-full flex flex-col items-center justify-center gap-2 bg-[var(--website-bg)]'>
         <div className='flex gap-2'>
           <h2>Website</h2>
-          {/* <LogoutButton/> */}
+          <LogoutButton/>
         </div>
         
         {children}
