@@ -1,5 +1,6 @@
 import { LogInput, RegInput } from "@/models/auth";
 
+
 export interface FormBaseTypes {
   formName: string;
   dimentions: string[];

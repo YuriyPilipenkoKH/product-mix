@@ -1,3 +1,4 @@
+import { AuthFormBaseTypes } from "@/types/formTypes"
 
 
 interface AuthFormProps {
