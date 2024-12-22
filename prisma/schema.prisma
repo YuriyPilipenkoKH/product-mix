@@ -17,13 +17,13 @@ model User {
   id         String     @id @default(auto()) @map("_id") @db.ObjectId
   email      String     @unique
   name       String
-  password   String?  // Make this optional
+  password   String? // Make this optional
   role       Role       @default(user) // Set default value as needed
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
   categories Category[] // One-to-many relationship with Collection
-  accounts Account[]
-  sessions      Session[]
+  accounts   Account[]
+  sessions   Session[]
 }
 
 model Account {
@@ -46,11 +46,11 @@ model Account {
 }
 
 model Session {
-    id                String  @id @default(auto()) @map("_id") @db.ObjectId
-    sessionToken String   @unique
-    userId       String
-    expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Product {
@@ -74,7 +74,6 @@ model Category {
   user      User      @relation(fields: [userId], references: [id]) // Relation to the User model
   // creator String
 }
-
 
 //Format the File:
 // Press Shift+Alt+F (Windows/Linux) or Shift+Option+F (macOS).
