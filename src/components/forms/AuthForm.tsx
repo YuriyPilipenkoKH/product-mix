@@ -93,6 +93,11 @@ try {
   toast.error(`An error occurred: ${errorMessage}`);
 }
 };
+const handleInputChange =   (field: keyof LogInput | keyof RegInput) => {
+  if(logError) setLogError('')
+    console.log(field);
+    
+  }
 
 return(
   <div>
