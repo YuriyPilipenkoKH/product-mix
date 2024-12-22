@@ -1,5 +1,7 @@
 // import LoginForm from '@/app/components/forms/LoginForm'
 // import { getSession } from '@/lib/getSession'
+import AuthForm from '@/components/forms/AuthForm'
+import { LoginFormProps } from '@/data/formProps'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
@@ -9,8 +11,9 @@ const LoginPage = async () => {
   //   redirect('/dashboard')
   // }
   return (
-    <div>LoginPage
-      {/* <LoginForm formName='loginForm' /> */}
+    <div>
+      <AuthForm 
+        formProps={ LoginFormProps }/>
     </div>
   )
 }
