@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FieldErrors, useForm } from 'react-hook-form'
+import { registerUser } from '@/actions/register-user'
+import { loginUser } from '@/actions/login-user'
+import toast from 'react-hot-toast'
+import capitalize from '@/lib/capitalize'
 
 interface AuthFormProps {
   formProps: AuthFormBaseTypes
@@ -48,6 +52,48 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
   const isRegisterData = (data: LogInput | RegInput): data is RegInput => {
     return (data as RegInput).name !== undefined;
   };
+  const onSubmit = async (data: LogInput | RegInput) => {
+    const formData = new FormData();
+  if (formName === 'registerForm' && isRegisterData(data)) {
+    formData.append('name', data.name); 
+  }
+  formData.append('email', data.email);
+  formData.append('password', data.password);
+
+try {
+  if (formName === 'loginForm') {
+    const result = await loginUser( formData );
+    if (result.success) {
+      toast.success(
+        `${capitalize(result?.user?.name) || 'Dude'}, you are logged in!`
+      );
+      reset();
+      router.push('/dashboard');
+    }
+  } else {
+    const result = await registerUser(formData);
+    if (result.success) {
+      toast.success(
+        `${capitalize(result?.user.name)}, your registration was successful!`
+      );
+      reset();
+      router.push('/login');
+    }
+    else if (!result.success) {
+
+      setLogError(result?.error || '');
+      console.log(result.error);
+      
+    }
+  }
+} catch (error) {
+  const errorMessage =
+    error instanceof Error ? error.message : 'An unknown error occurred';
+  setLogError(errorMessage);
+  toast.error(`An error occurred: ${errorMessage}`);
+}
+};
+
 return(
   <div>
     <h2>{formName}</h2>
