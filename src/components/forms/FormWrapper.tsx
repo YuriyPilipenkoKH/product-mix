@@ -6,17 +6,11 @@ import React from 'react'
 // import SocialLogin from '../OAuth/SocialLogin';
 import { FaRegistered } from "react-icons/fa";
 import { LuKeyRound } from "react-icons/lu";
+import FormHeader from './FormHeader';
 
 interface FormWrapperProps {
   children: React.ReactNode;
   formProps: AuthFormBaseTypes
-  // formName: string
-  // titleLabel: string;
-  // welcomeMsg: string
-  // backButtonLabel: string;
-  // backButtonHref: string;
-  // showSocial?: boolean
-  
 }
 
 const FormWrapper = ({
@@ -45,14 +39,14 @@ const FormWrapper = ({
         <div></div>
        )} 
        <div className='flex w-full justify-center items-center mt-4'>
-          <BtnX 
+          <button
             href={backButtonHref}
             label={backButtonLabel}> 
             {(formName === 'loginForm') 
             ? <FaRegistered/>
             : <LuKeyRound/>}
               
-            </BtnX >
+            </button >
        </div>
     </div>
   )
