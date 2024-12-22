@@ -21,11 +21,6 @@ interface AuthFormProps {
 const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
   const {
     formName,
-    titleLabel,
-    welcomeMsg,
-    backButtonLabel, 
-    backButtonHref, 
-    showSocial
   } = formProps
   const [logError, setLogError] = useState<string>('')
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
