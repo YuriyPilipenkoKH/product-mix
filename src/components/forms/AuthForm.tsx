@@ -74,7 +74,7 @@ try {
     const result = await registerUser(formData);
     if (result.success) {
       toast.success(
-        `${capitalize(result?.user.name)}, your registration was successful!`
+        `${capitalize(result?.user?.name)}, your registration was successful!`
       );
       reset();
       router.push('/login');
