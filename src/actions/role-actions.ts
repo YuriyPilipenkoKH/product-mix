@@ -41,11 +41,11 @@ export async function performRoleBasedAction(formData: FormData) {
         }
       }
       break
-    case 'admin':
+    case 'editor':
       if (action === 'approveRequest') {
-        // Perform manager-specific action
+        // Perform editor-specific action
         // For this example, we'll just return a success message
-        return { message: "Manager action: Request approved" }
+        return { message: "editor action: Request approved" }
       }
       break
     case 'user':
