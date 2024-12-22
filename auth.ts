@@ -1,4 +1,4 @@
-import NextAuth, { Account,} from "next-auth"; 
+import NextAuth, { Account, Session, User,} from "next-auth"; 
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
@@ -6,7 +6,7 @@ import { compare } from "bcrypt-ts";
 import prisma from "@/lib/prisma";
 import { connectMongoDB } from "@/lib/mongo";
 import { JWT } from "next-auth/jwt";
-import { Session, User } from "@prisma/client";
+
 
 export const authOptions = {
   providers: [
@@ -96,8 +96,8 @@ export const authOptions = {
     },
     async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
-        token.id = user.id;
-        token.role = user.role; // Include role in the token
+        token.id = user.id as string;
+        token.role = user.role as string;
       }
       return token;
     },
