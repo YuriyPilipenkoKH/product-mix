@@ -2,6 +2,7 @@
 
 import { logoutUser } from '@/actions/logout-user';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
   interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
       children: React.ReactNode;
@@ -37,9 +38,13 @@ import { useRouter } from 'next/navigation';
 
 export const LogoutButton = () => {
   const handleLogout = async () => {
-    await logoutUser();
+    const result =  await logoutUser();
+    if (result?.success) {
+      toast.success(
+        result?.message
+      );
   };
-
+}
   return (
     <button 
     className="btn btn-primary"
