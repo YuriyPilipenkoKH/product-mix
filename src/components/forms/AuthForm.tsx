@@ -86,7 +86,8 @@ try {
     console.log(result);
     
     if (!result.success) {
-      console.error("Login error:", result.error);
+      console.log("Login error:", result.error);
+      toast.error(result.error)
       return;
     }
     if (result.success && result?.user?.name) {

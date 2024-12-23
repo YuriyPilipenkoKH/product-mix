@@ -79,7 +79,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/login",
+    signIn: "/login", // When the user visits a protected route without being logged in, they will be redirected to /login
     signOut: "/login", // The page where the user will be redirected after logging out
   },
   callbacks: {
