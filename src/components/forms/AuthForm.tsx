@@ -62,10 +62,26 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
 try {
   if (formName === 'loginForm') {
     const result = await loginUser( formData );
+    if (!result.success) {
+      console.error("Login error:", result.error);
+      return;
+    }
     if (result.success) {
-      toast.success(
-        `${capitalize(result?.user?.name) || 'Dude'}, you are logged in!`
-      );
+        // Use `signIn` client-side to complete authentication
+      const signInResponse = await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+      if (signInResponse?.error) {
+        console.error("SignIn error:", signInResponse.error);
+        return;
+      }
+      if (signInResponse?.ok){
+        toast.success(
+          `${capitalize(result?.user?.name) || 'Dude'}, you are logged in!`
+        );
+      }
       reset();
       router.push('/dashboard');
     }
