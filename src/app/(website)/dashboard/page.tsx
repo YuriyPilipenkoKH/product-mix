@@ -1,5 +1,7 @@
 import capitalize from '@/lib/capitalize';
+import { getSession } from '@/lib/getSession';
 import { Session } from 'next-auth';
+
 import React from 'react';
 
 interface DashboardPageProps {
@@ -7,11 +9,9 @@ interface DashboardPageProps {
 }
 
 
-const DashboardPage:React.FC<DashboardPageProps> =  ({
-  session
-}) => {
-
-  const user = session?.user;
+const DashboardPage:React.FC<DashboardPageProps> =  async() => {
+  const session = await getSession();
+  const user = session?.user
   const userName = user?.name;
   const userEmail = user?.email;
 

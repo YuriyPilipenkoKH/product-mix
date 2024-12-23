@@ -9,7 +9,6 @@ interface Props {
 
 async function Layout({ children }: Props) {
   const session = await getSession();
-
   if (!session) {
     redirect('/login'); // Redirect if no session
   }
@@ -20,7 +19,8 @@ async function Layout({ children }: Props) {
         <h2>Website</h2>
         <LogoutButton />
       </div>
-      {React.cloneElement(children, { session })}
+      {/* {React.cloneElement(children, { session })} */}
+      {children}
     </div>
   );
 }
