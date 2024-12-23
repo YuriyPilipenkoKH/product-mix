@@ -101,7 +101,7 @@ try {
     if (result.success && result?.user?.name) {
       nextAuthSignIn(result?.user?.name)
       reset();
-      router.push('/login');
+      router.push('/dashboard');
     }
     else if (!result.success) {
 
