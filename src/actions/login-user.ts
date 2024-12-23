@@ -43,7 +43,7 @@ export const loginUser = async(formData: FormData) => {
     //   return { success: false, error: "Invalid login credentials" };
     // }
     revalidatePath('/dashboard');
-    return { success: true, user: {name: user.name}};
+    return { success: true, user: {name: user.name, email: user.email}};
 
     }
      catch (error) {
