@@ -23,6 +23,11 @@ export const loginUser = async(formData: FormData) => {
       return { success: false, error: "User not found" };
     }
 
+    const isPasswordValid = true; // Replace with actual password comparison logic
+    if (!isPasswordValid) {
+      return { success: false, error: "Invalid login credentials" };
+    }
+
     const result =  await signIn("credentials", {
       redirect: false,
       callbackUrl: "/",

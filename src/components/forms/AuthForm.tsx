@@ -13,6 +13,7 @@ import FormWrapper from './FormWrapper'
 import { CgCloseO } from 'react-icons/cg'
 import { FlatBtn } from '../Button/Button'
 import { retrieveToken } from '@/lib/retrieveToken'
+import { signIn } from "next-auth/react";
 
 interface AuthFormProps {
   formProps: AuthFormBaseTypes

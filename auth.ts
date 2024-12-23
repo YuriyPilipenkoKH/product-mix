@@ -129,17 +129,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           });
 
           if (!existingUser) {
+            console.error("user not found");
+            return false;
             // Create a new user in the database
-            await prisma.user.create({
-              data: {
-                email: user.email,
-                name: user.name || "Unknown",
-                role: "user", // Default role
-                password: "placeholder_password", // Use a placeholder password
-                // createdAt: new Date(), // Ensure createdAt is included
-                // updatedAt: new Date(), // Ensure updatedAt is included
-              },
-            });
+            // await prisma.user.create({
+            //   data: {
+            //     email: user.email,
+            //     name: user.name || "Unknown",
+            //     role: "user", // Default role
+            //     password: "placeholder_password", // Use a placeholder password
+            //     // createdAt: new Date(), // Ensure createdAt is included
+            //     // updatedAt: new Date(), // Ensure updatedAt is included
+            //   },
+            // });
           }
         } catch (error) {
           console.error("Error while creating user:", error);
