@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 import { signIn } from "../../auth";
 import { connectMongoDB } from "@/lib/mongo";
 import { revalidatePath } from "next/cache";
+import { compare } from 'bcrypt-ts'
 
 export const loginUser = async(formData: FormData) => {
   const email = formData.get('email') as string | null;
@@ -23,21 +24,24 @@ export const loginUser = async(formData: FormData) => {
       return { success: false, error: "User not found" };
     }
 
-    const isPasswordValid = true; // Replace with actual password comparison logic
-    if (!isPasswordValid) {
-      return { success: false, error: "Invalid login credentials" };
+    if (user.password) {
+      const isPasswordValid = await compare(password, user?.password); 
+      if (!isPasswordValid) {
+        return { success: false, error: "Invalid login credentials" };
+      }
     }
 
-    const result =  await signIn("credentials", {
-      redirect: false,
-      callbackUrl: "/",
-      email,
-      password,
-    });
 
-    if (!result ) {
-      return { success: false, error: "Invalid login credentials" };
-    }
+    // const result =  await signIn("credentials", {
+    //   redirect: false,
+    //   callbackUrl: "/",
+    //   email,
+    //   password,
+    // });
+
+    // if (!result ) {
+    //   return { success: false, error: "Invalid login credentials" };
+    // }
     revalidatePath('/dashboard');
     return { success: true, user: {name: user.name}};
 
