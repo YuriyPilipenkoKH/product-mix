@@ -51,23 +51,18 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
   const isRegisterData = (data: LogInput | RegInput): data is RegInput => {
     return (data as RegInput).name !== undefined;
   };
+
+  
   const onSubmit = async (data: LogInput | RegInput) => {
     const formData = new FormData();
-  if (formName === 'registerForm' && isRegisterData(data)) {
-    formData.append('name', data.name); 
-  }
-  formData.append('email', data.email);
-  formData.append('password', data.password);
-
-try {
-  if (formName === 'loginForm') {
-    const result = await loginUser( formData );
-    if (!result.success) {
-      console.error("Login error:", result.error);
-      return;
+    if (formName === 'registerForm' && isRegisterData(data)) {
+      formData.append('name', data.name); 
     }
-    if (result.success) {
-        // Use `signIn` client-side to complete authentication
+    formData.append('email', data.email);
+    formData.append('password', data.password);
+    
+    const nextAuthSignIn = async () => {
+      // Use `signIn` client-side to complete authentication
       const signInResponse = await signIn("credentials", {
         redirect: false,
         email: data.email,
@@ -78,10 +73,23 @@ try {
         return;
       }
       if (signInResponse?.ok){
-        toast.success(
-          `${capitalize(result?.user?.name) || 'Dude'}, you are logged in!`
+        toast.success( (formName === 'loginForm')
+         ?  "you are logged in!"          
+         :  "your registration successful!"         
         );
       }
+    }
+
+
+try {
+  if (formName === 'loginForm') {
+    const result = await loginUser( formData );
+    if (!result.success) {
+      console.error("Login error:", result.error);
+      return;
+    }
+    if (result.success) {
+
       reset();
       router.push('/dashboard');
     }

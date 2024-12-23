@@ -40,6 +40,8 @@ export async function registerUser (formData: FormData)  {
           role: "user", // Default role for new users
         },
       });
+
+      
    
       // Automatically log the user in after registration
       const signInResponse = await signIn("credentials", {
@@ -51,13 +53,15 @@ export async function registerUser (formData: FormData)  {
       if (signInResponse?.error) {
         return { success: false, error: signInResponse.error };
       }
+
+
       // Exclude sensitive fields
       const { password: _, ...plainUser } = newUser;
       revalidatePath('/dashboard');
       return { 
         success: true, 
         message: "User registered and logged in successfully.", 
-        user:plainUser
+        user: plainUser
       };
     } else {
       return { success: false, error: "Email is not allowed" };
