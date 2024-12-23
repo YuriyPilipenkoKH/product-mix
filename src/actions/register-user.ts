@@ -2,7 +2,6 @@
 
 import prisma from "@/lib/prisma";
 import {hashSync} from 'bcrypt-ts'
-import { signIn } from "../../auth";
 import { connectMongoDB } from "@/lib/mongo";
 import { revalidatePath } from "next/cache";
 

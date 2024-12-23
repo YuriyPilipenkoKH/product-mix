@@ -90,17 +90,40 @@ try {
       toast.error(result.error)
       return;
     }
-    if (result.success && result?.user?.name) {
-      nextAuthSignIn(result?.user?.name)
+    if (result.success) {
+      
+      const signInResponse = await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+      if (signInResponse?.error) {
+        console.error("SignIn error:", signInResponse.error);
+        return;
+      }
+      if (signInResponse?.ok){
+        toast.success( "you are logged in!");
+      }
       reset();
       router.push('/dashboard');
     }
-  } else {
+  } else if (formName === 'registerForm') {
     const result = await registerUser(formData);
     console.log(result);
 
-    if (result.success && result?.user?.name) {
-      nextAuthSignIn(result?.user?.name)
+    if (result.success ) {
+      const signInResponse = await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+      if (signInResponse?.error) {
+        console.error("SignIn error:", signInResponse.error);
+        return;
+      }
+      if (signInResponse?.ok){
+        toast.success( "you are in!");
+      }
       reset();
       router.push('/dashboard');
     }

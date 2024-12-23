@@ -11,10 +11,14 @@ const LoginPage = async () => {
     redirect('/dashboard')
   }
   return (
-    <div>
-      <AuthForm 
-        formProps={ LoginFormProps }/>
-    </div>
+    <>
+    {!session && (
+      <div>
+        <AuthForm 
+          formProps={ LoginFormProps }/>
+      </div>
+    )}
+    </>
   )
 }
 

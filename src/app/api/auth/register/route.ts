@@ -22,6 +22,8 @@ export const POST = async (req: Request) => {
           password: hashedPassword
         }
       })
+      console.log(newUser);
+      
 
     return NextResponse.json(
       {data:{
@@ -29,12 +31,13 @@ export const POST = async (req: Request) => {
         email, 
         password: hashedPassword
       }},
-      {status: 201}
+      {status: 201},
+      
     )  
   } 
   catch (error) {
     return NextResponse.json(
-      { message: "Server error"},
+      { message: "Server error"+ error},
       { status: 500 }
     )
     }
