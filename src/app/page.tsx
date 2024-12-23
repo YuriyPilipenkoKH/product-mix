@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 export default function Home() {
@@ -14,9 +15,12 @@ export default function Home() {
           <h1 className="mb-5 text-3xl font-bold">Hello there</h1>
           <h2 className="mb-5 text-5xl font-bold"> Product Mix</h2>
           <p className="mb-5">
-          The Product Mix app is a modern web application that leverages server actions to securely handle product management directly on the server side. This app allows users to store, organize, and manage different products in a database using intuitive CRUD operations.
+            The Product Mix app is a modern web application that leverages server actions to securely handle product management directly on the server side. This app allows users to store, organize, and manage different products in a database using intuitive CRUD operations.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn btn-primary">
+            <Link 
+            href='/dashboard'>Get Started</Link>
+          </button>
         </div>
       </div>
   </div>

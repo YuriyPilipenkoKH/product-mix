@@ -1,9 +1,9 @@
 
 
-export default function Home() {
+export default function Website() {
   return (
   <div className="h-full">
-    Next-Routes
+    Mix
   </div>
   );
 }

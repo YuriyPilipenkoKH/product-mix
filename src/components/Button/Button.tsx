@@ -30,7 +30,8 @@ import toast from 'react-hot-toast';
     return(
      <button 
      className='FlatBtn'
-     type='button' {...props}>
+     type='button' 
+     {...props}>
        {children}
        </button>
     )
@@ -47,13 +48,27 @@ export const LogoutButton = () => {
 }
   return (
     <button 
-    className="btn btn-primary"
-    onClick={handleLogout}
-     >
-      Logout
+      className="btn btn-primary"
+      onClick={handleLogout}  >
+        Logout
     </button>
   );
 };
+
+
+  export const GetStartedButton: React.FC<ButtonProps> = ({ 
+    children, ...props }) => {
+
+    return(
+      <button 
+        className='GetStarted btn btn-primary'
+        type='button' 
+        {...props}
+         >
+          {children}
+      </button>
+     )
+}
 
 
 
