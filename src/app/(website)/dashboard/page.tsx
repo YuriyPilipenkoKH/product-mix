@@ -11,7 +11,7 @@ const DashboardPage:React.FC<DashboardPageProps> =  ({
   session
 }) => {
 
-  const user = session.user;
+  const user = session?.user;
   const userName = user?.name;
   const userEmail = user?.email;
 
