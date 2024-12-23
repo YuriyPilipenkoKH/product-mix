@@ -61,24 +61,6 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
     formData.append('email', data.email);
     formData.append('password', data.password);
     
-    const nextAuthSignIn = async (userName: string) => {
-      // Use `signIn` client-side to complete authentication
-      const signInResponse = await signIn("credentials", {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
-      if (signInResponse?.error) {
-        console.error("SignIn error:", signInResponse.error);
-        return;
-      }
-      if (signInResponse?.ok){
-        toast.success( (formName === 'loginForm')
-         ?  `${capitalize(userName)}, you are logged in! `         
-         :  `${capitalize(userName)}, your registration was successful! `       
-        );
-      }
-    }
 
 try {
   if (formName === 'loginForm') {
