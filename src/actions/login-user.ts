@@ -25,11 +25,11 @@ export const loginUser = async(formData: FormData) => {
     }
 
     if (user.password) {
-      const isPasswordValid = await compare(password, user?.password); 
+      const isPasswordValid = await compare(password, user.password); 
       if (!isPasswordValid) {
         return { success: false, error: "Invalid login credentials" };
       }
-    }
+    }else return  { success: false, error: "Couldn't find password " }
 
 
     // const result =  await signIn("credentials", {
