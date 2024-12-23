@@ -31,17 +31,6 @@ export const loginUser = async(formData: FormData) => {
       }
     }else return  { success: false, error: "Couldn't find password " }
 
-
-    // const result =  await signIn("credentials", {
-    //   redirect: false,
-    //   callbackUrl: "/",
-    //   email,
-    //   password,
-    // });
-
-    // if (!result ) {
-    //   return { success: false, error: "Invalid login credentials" };
-    // }
     revalidatePath('/dashboard');
     return { success: true, user: {name: user.name, email: user.email}};
 
