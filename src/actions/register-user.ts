@@ -41,18 +41,18 @@ export async function registerUser (formData: FormData)  {
         },
       });
 
-      
+
    
       // Automatically log the user in after registration
-      const signInResponse = await signIn("credentials", {
-        email,
-        password,
-        redirect: false, // Set to false to handle the result manually
-      });
+      // const signInResponse = await signIn("credentials", {
+      //   email,
+      //   password,
+      //   redirect: false, // Set to false to handle the result manually
+      // });
   
-      if (signInResponse?.error) {
-        return { success: false, error: signInResponse.error };
-      }
+      // if (signInResponse?.error) {
+      //   return { success: false, error: signInResponse.error };
+      // }
 
 
       // Exclude sensitive fields

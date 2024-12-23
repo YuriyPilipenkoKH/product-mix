@@ -89,16 +89,14 @@ try {
       return;
     }
     if (result.success) {
-
+      nextAuthSignIn()
       reset();
       router.push('/dashboard');
     }
   } else {
     const result = await registerUser(formData);
     if (result.success) {
-      toast.success(
-        `${capitalize(result?.user?.name)}, your registration was successful!`
-      );
+      nextAuthSignIn()
       reset();
       router.push('/login');
     }
