@@ -1,11 +1,13 @@
 import { getSession } from "@/lib/getSession"
+import { redirect } from "next/navigation";
 
 
 const AdminPage =async () => {
   const session = await getSession()
   const user = session?.user
   const userRole = user?.role;
-  console.log(user);
+  
+  if(userRole !== 'admin') redirect('/dashboard')
   
   return (
     <>
