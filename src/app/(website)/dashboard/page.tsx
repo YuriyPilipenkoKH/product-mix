@@ -8,6 +8,7 @@ const DashboardPage =  async() => {
   const user = session?.user
   const userName = user?.name;
   const userEmail = user?.email;
+  
 
   return (
     <div className="grid gap-1">

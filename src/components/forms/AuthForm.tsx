@@ -84,7 +84,7 @@ try {
         return;
       }
       if (signInResponse?.ok){
-        toast.success( "you are logged in!");
+        toast.success( `${capitalize(result.user?.name)}, you are logged in!`);
       }
       reset();
       router.push('/dashboard');
@@ -104,7 +104,7 @@ try {
         return;
       }
       if (signInResponse?.ok){
-        toast.success( "you are in!");
+        toast.success( `${capitalize(result.user?.name)}, your registration was successful`);
       }
       reset();
       router.push('/dashboard');
