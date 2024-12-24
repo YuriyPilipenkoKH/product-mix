@@ -10,11 +10,14 @@ export const RegisterSchema = z.object({
         .refine((val) => !val.toLowerCase().startsWith('qwe'), {
             message: 'Enter a different name'
           })
-          .refine((val) => {
+         .superRefine((val, ctx) => {
             const forbidden = process.env.NAMES_TO_AVOID?.split(",").map((name) => name.toLowerCase()) || [];
-            return !forbidden.includes(val.toLowerCase());
-          }, {
-            message: `Name is not allowed`,
+            if (forbidden.includes(val.toLowerCase())) {
+              ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Name is not allowed",
+              });
+            }
           }),
 
     email: z
@@ -67,3 +70,13 @@ export const LoginSchema = z.object({
 
    export type RegInput = z.infer <typeof RegisterSchema >
    export type LogInput = z.infer <typeof LoginSchema >
+
+// name validation
+// 1 variant
+  //  .refine((val) => {
+  //   const forbidden = process.env.NAMES_TO_AVOID?.split(",").map((name) => name.toLowerCase()) || [];
+  //   return !forbidden.includes(val.toLowerCase());
+  // }, {
+  //   message: `Name is not allowed`,
+  // }),
+// 2 variant
