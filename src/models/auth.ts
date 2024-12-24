@@ -7,6 +7,7 @@ export const RegisterSchema = z.object({
         .trim()
         .min(3, 'At least 3 characters for name')
         .max( 32, 'Not longer than 32 characters')
+        .regex(/^[a-zA-Z0-9]+$/, 'Only letters and numbers are allowed')
         .refine((val) => !val.toLowerCase().startsWith('qwe'), {
             message: 'Enter a different name'
           })
