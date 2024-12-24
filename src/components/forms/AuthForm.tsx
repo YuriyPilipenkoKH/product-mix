@@ -107,6 +107,9 @@ try {
       await nextAuthSignIn(result?.user?.name)
       reset();
       router.push('/dashboard');
+    } else if (!result.success) {
+      setLogError(result?.error || '');
+      console.log(result.error);
     }
 
   } else if (formName === 'registerForm') {
@@ -117,11 +120,11 @@ try {
       reset();
       router.push('/dashboard');
     }
+    else if (!result.success) {
+      setLogError(result?.error || '');
+      console.log(result.error);
+    }
   }
-    // else if (!result.success) {
-    //   setLogError(result?.error || '');
-    //   console.log(result.error);
-    // }
   }
   catch (error) {
     const errorMessage =
