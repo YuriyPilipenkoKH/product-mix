@@ -15,7 +15,7 @@ const WebNavBar:React.FC<WebNavBarProps> = ({session}) => {
 
   return (
     <nav className='flex items-center justify-between gap-3 p-3 w-full '>
-      <Logo/>
+      <Logo src='https://res.cloudinary.com/dwdkw1a4j/image/upload/v1720469699/productslist/logo/racvswvmivsj7kx8z2ta.png'  />
       <Link href={'/'}>home</Link>
       <Link href={'/dashboard'}>dashboard</Link>
       {userRole === 'admin' && (

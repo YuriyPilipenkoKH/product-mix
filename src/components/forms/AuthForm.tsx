@@ -182,7 +182,7 @@ return(
       />
   </label>
   <button
-    className='mt-auto btn btn-active btn-neutral'
+    className='mt-auto btn btn-active btn-secondary'
     type='submit'
     disabled={isSubmitting || !isDirty || !isValid || !!logError}
         >
