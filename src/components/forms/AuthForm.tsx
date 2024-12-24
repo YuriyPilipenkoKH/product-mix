@@ -60,61 +60,70 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
     }
     formData.append('email', data.email);
     formData.append('password', data.password);
-    
+
+    const nextAuthSignIn = async (userName: string) => {
+     // Use `signIn` client-side to complete authentication
+     const signInResponse = await signIn("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+    });
+    if (signInResponse?.error) {
+      console.error("SignIn error:", signInResponse.error);
+      return;
+    }
+    if (signInResponse?.ok){
+      toast.success( (formName === 'loginForm')
+       ?  `${capitalize(userName)}, you are logged in! `         
+       :  `${capitalize(userName)}, your registration was successful! `       
+      );
+    } 
+    }
 
 try {
   if (formName === 'loginForm') {
     const result = await loginUser( formData );
-    console.log(result);
-    
-    if (!result.success) {
-      console.log("Login error:", result.error);
-      toast.error(result.error)
-      return;
-    }
-    if (result.success) {
+
+    // if (!result.success) {
+    //   console.log("Login error:", result.error);
+    //   toast.error(result.error)
+    //   return;
+    // }
+    // if (result.success) {
       
-      const signInResponse = await signIn("credentials", {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
-      if (signInResponse?.error) {
-        console.error("SignIn error:", signInResponse.error);
-        return;
-      }
-      if (signInResponse?.ok){
-        toast.success( `${capitalize(result.user?.name)}, you are logged in!`);
-      }
+    //   const signInResponse = await signIn("credentials", {
+    //     redirect: false,
+    //     email: data.email,
+    //     password: data.password,
+    //   });
+    //   if (signInResponse?.error) {
+    //     console.error("SignIn error:", signInResponse.error);
+    //     return;
+    //   }
+    //   if (signInResponse?.ok){
+    //     toast.success( `${capitalize(result.user?.name)}, you are logged in!`);
+    //   }
+    if (result.success && result?.user?.name) {
+      await nextAuthSignIn(result?.user?.name)
       reset();
       router.push('/dashboard');
     }
+
   } else if (formName === 'registerForm') {
     const result = await registerUser(formData);
-    console.log(result);
 
-    if (result.success ) {
-      const signInResponse = await signIn("credentials", {
-        redirect: false,
-        email: data.email,
-        password: data.password,
-      });
-      if (signInResponse?.error) {
-        console.error("SignIn error:", signInResponse.error);
-        return;
-      }
-      if (signInResponse?.ok){
-        toast.success( `${capitalize(result.user?.name)}, your registration was successful`);
-      }
+    if (result.success && result?.user?.name) {
+      await nextAuthSignIn(result?.user?.name)
       reset();
       router.push('/dashboard');
     }
-    else if (!result.success) {
-      setLogError(result?.error || '');
-      console.log(result.error);
-    }
   }
-  } catch (error) {
+    // else if (!result.success) {
+    //   setLogError(result?.error || '');
+    //   console.log(result.error);
+    // }
+  }
+  catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : 'An unknown error occurred';
     setLogError(errorMessage);
