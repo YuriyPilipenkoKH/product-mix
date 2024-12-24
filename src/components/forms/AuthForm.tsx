@@ -84,25 +84,6 @@ try {
   if (formName === 'loginForm') {
     const result = await loginUser( formData );
 
-    // if (!result.success) {
-    //   console.log("Login error:", result.error);
-    //   toast.error(result.error)
-    //   return;
-    // }
-    // if (result.success) {
-      
-    //   const signInResponse = await signIn("credentials", {
-    //     redirect: false,
-    //     email: data.email,
-    //     password: data.password,
-    //   });
-    //   if (signInResponse?.error) {
-    //     console.error("SignIn error:", signInResponse.error);
-    //     return;
-    //   }
-    //   if (signInResponse?.ok){
-    //     toast.success( `${capitalize(result.user?.name)}, you are logged in!`);
-    //   }
     if (result.success && result?.user?.name) {
       await nextAuthSignIn(result?.user?.name)
       reset();
