@@ -8,7 +8,9 @@ interface Props {
 function Layout({ children }: Props) {
   return (
     <div className='min-h-screen flex flex-col gap-4 items-center justify-center text-slate-300 bg-[var(--auth-bg)]'>
-      <Logo src={imageProps.authLogo}/>
+      <div className='absolute top-[1rem] left-[1rem]'>
+        <Logo src={imageProps.authLogo}/>
+      </div>
         {children}
     </div>
   )
