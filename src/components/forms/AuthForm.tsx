@@ -1,8 +1,9 @@
 'use client'
+import { useEffect, useState } from "react"
+import '../styles/FormStyles.css'
 import { LogInput, LoginSchema, RegInput, RegisterSchema } from '@/models/auth'
 import { AuthFormBaseTypes } from "@/types/formTypes"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FieldErrors, useForm } from 'react-hook-form'
 import { registerUser } from '@/actions/register-user'

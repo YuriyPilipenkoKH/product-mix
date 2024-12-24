@@ -1,5 +1,5 @@
 'use client'
-
+import '../styles/ButtonStyles.css'
 import { logoutUser } from '@/actions/logout-user';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
