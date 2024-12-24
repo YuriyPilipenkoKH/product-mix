@@ -142,7 +142,7 @@ return(
   <FormWrapper  formProps={formProps} >
   <form
     onSubmit={handleSubmit(onSubmit, onInvalid)}
-    className='AuthForm flex flex-col gap-3 items-center'
+    className='AuthForm flex flex-col gap-3 items-center relative'
     autoComplete="off"
     noValidate>
   {(formName === 'loginForm') && csrfToken && <input type="hidden" name="csrfToken" value={csrfToken} />}

@@ -7,6 +7,8 @@
 }
 
 .autherror {
+  position: absolute;
+  bottom: -35px;
   color: #ededed;
   background-color: darkred;
   font-size: 0.7rem;

@@ -39,7 +39,7 @@ const FormWrapper = ({
         // <SocialLogin/>
         <></>
        )} 
-       <div className='flex w-full justify-center items-center mt-4'>
+       <div className='flex w-full justify-center items-center mt-8'>
           <BtnX
             href={backButtonHref}
             label={backButtonLabel}> 
