@@ -11,14 +11,14 @@
 
 .autherror {
   position: absolute;
-  bottom: -35px;
+  bottom: -33px;
   color: #ededed;
   background-color: darkred;
   font-size: 0.7rem;
   line-height: 1.25rem/* 20px */;
   padding: 8px 8px;
   /* padding-right: 0.75rem/* 12px; */
-  border-radius: 0.8rem/* 6px */;
+  border-radius: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
