@@ -12,7 +12,7 @@ const DashboardPage =  async() => {
  
 
   return (
-    <div className="grid gap-1">
+    <div className="grid gap-1 h-full">
       <p>Logged in as {userName && capitalize(userName) || 'User'}</p>
       <p>with email {userEmail}</p>
       <p>with role {userRole}</p>

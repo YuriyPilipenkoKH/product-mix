@@ -16,7 +16,7 @@ async function Layout({ children }: Props) {
   return (
     <>
       {session && (
-        <div className="h-full flex flex-col items-center justify-center gap-2 bg-[var(--website-bg)]">
+        <div className="min-h-screen flex flex-col items-center  gap-2 bg-[var(--website-bg)]">
           <WebNavBar session={session} />
           <div className="flex gap-2">
             <h2>Website</h2>      

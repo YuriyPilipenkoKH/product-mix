@@ -7,7 +7,7 @@ function Logo() {
   const [isOptimized, setIsOptimized] = useState(false)
   const [isloading, setIsloading] = useState(false)
   return (
-    <Link href='/dashboard'>
+    <Link href='/'>
         <Image 
           src='https://res.cloudinary.com/dwdkw1a4j/image/upload/v1720469699/productslist/logo/racvswvmivsj7kx8z2ta.png' 
           alt='icon' 

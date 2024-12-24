@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { LogoutButton } from '../Button/Button'
 import { Session } from 'next-auth'
+import Logo from '../Logo'
 
 interface WebNavBarProps {
   session: Session
@@ -14,7 +15,7 @@ const WebNavBar:React.FC<WebNavBarProps> = ({session}) => {
 
   return (
     <nav className='flex items-center justify-between gap-3 p-3 w-full '>
-      <Link href={''}>logo</Link>
+      <Logo/>
       <Link href={'/'}>home</Link>
       <Link href={'/dashboard'}>dashboard</Link>
       {userRole === 'admin' && (
