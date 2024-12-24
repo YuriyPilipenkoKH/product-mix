@@ -141,7 +141,7 @@ return(
   <FormWrapper  formProps={formProps} >
   <form
     onSubmit={handleSubmit(onSubmit, onInvalid)}
-    className='flex flex-col gap-3 items-center'
+    className='AuthForm flex flex-col gap-3 items-center'
     autoComplete="off"
     noValidate>
   {(formName === 'loginForm') && csrfToken && <input type="hidden" name="csrfToken" value={csrfToken} />}
@@ -182,7 +182,7 @@ return(
       />
   </label>
   <button
-    className='mt-auto btn btn-active btn-secondary'
+    className='AuthFormSubmitBtn mt-auto btn btn-active btn-outline w-full'
     type='submit'
     disabled={isSubmitting || !isDirty || !isValid || !!logError}
         >
