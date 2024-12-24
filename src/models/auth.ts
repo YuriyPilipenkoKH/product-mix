@@ -1,4 +1,3 @@
-
 import { z } from "zod"
 
 export const RegisterSchema = z.object({
@@ -11,10 +10,12 @@ export const RegisterSchema = z.object({
         .refine((val) => !val.toLowerCase().startsWith('qwe'), {
             message: 'Enter a different name'
           })
-        .refine((val) => val.toLowerCase() !== 'admin', {
-            message: 'Admin is not allowed'
-          })  
-          ,
+          .refine((val) => {
+            const forbidden = process.env.NAMES_TO_AVOID?.split(",").map((name) => name.toLowerCase()) || [];
+            return !forbidden.includes(val.toLowerCase());
+          }, {
+            message: `Name is not allowed`,
+          }),
 
     email: z
         .string()
