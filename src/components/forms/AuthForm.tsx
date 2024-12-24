@@ -15,6 +15,7 @@ import { CgCloseO } from 'react-icons/cg'
 import { FlatBtn } from '../Button/Button'
 import { retrieveToken } from '@/lib/retrieveToken'
 import { signIn } from "next-auth/react";
+import { cn } from "@/lib/utils"
 
 interface AuthFormProps {
   formProps: AuthFormBaseTypes
@@ -149,9 +150,11 @@ return(
   {(formName === 'registerForm') && (
   <>
     <label 
-    className="formLabel input input-bordered flex items-center gap-2">
+    className={cn("formLabel input input-bordered flex items-center gap-2",
+      errors.name && 'highlight'
+    )}>
     <input 
-    className="grow"
+     className={cn('grow' )}
     {...register('name', { onChange: handleInputChange })}
       placeholder=	{( isSubmitting ) 
       ? "Processing" 
@@ -161,9 +164,11 @@ return(
   </>
   )}
   <label 
-  className="formLabel input input-bordered flex items-center gap-2">
+  className={cn("formLabel input input-bordered flex items-center gap-2",
+    errors.email && 'highlight'
+  )}>
   <input
-  className="grow" 
+  className={cn('grow' )} 
   {...register('email', { onChange: handleInputChange })}
     placeholder=	{( isSubmitting ) 
     ? "Processing" 
@@ -171,9 +176,11 @@ return(
   />
   </label>
   <label 
-  className="formLabel input input-bordered flex items-center gap-2">
+    className={cn("formLabel input input-bordered flex items-center gap-2",
+      errors.password && 'highlight'
+    )}>
     <input
-    className="grow"
+    className={cn('grow' )}
        {...register('password')}
        onChange={(e) => {
          register('password').onChange(e);
