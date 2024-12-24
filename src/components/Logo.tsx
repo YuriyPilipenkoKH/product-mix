@@ -13,7 +13,7 @@ const Logo:React.FC<LogoProps> = ({src}) => {
   return (
     <Link href='/'>
         <Image 
-          src='https://res.cloudinary.com/dwdkw1a4j/image/upload/v1720469699/productslist/logo/racvswvmivsj7kx8z2ta.png' 
+          src={src}
           alt='icon' 
           width={30} 
           height={30}
