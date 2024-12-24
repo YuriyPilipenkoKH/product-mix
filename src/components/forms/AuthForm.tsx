@@ -165,7 +165,7 @@ return(
   )}
   <label 
   className={cn("formLabel input input-bordered flex items-center gap-2",
-    errors.email && 'highlight'
+    errors.email || logError && 'highlight'
   )}>
   <input
   className={cn('grow' )} 
