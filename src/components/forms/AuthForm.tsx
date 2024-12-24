@@ -88,7 +88,8 @@ try {
       await nextAuthSignIn(result?.user?.name)
       reset();
       router.push('/dashboard');
-    } else if (!result.success) {
+    } 
+    else if (!result.success) {
       setLogError(result?.error || '');
       console.log(result.error);
     }

@@ -9,7 +9,7 @@ export const loginUser = async(formData: FormData) => {
   const email = formData.get('email') as string | null;
   const password = formData.get('password') as string | null;
 
-  if ( !email || !password) {
+  if ( !email || !password ) {
     throw new Error("All fields are required.");
   }
     try {
