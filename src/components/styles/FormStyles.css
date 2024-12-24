@@ -5,6 +5,9 @@
    color: var(--fallback-bc);
 
 }
+.AuthForm>.formLabel{
+  color: #222;
+}
 
 .autherror {
   position: absolute;

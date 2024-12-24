@@ -149,7 +149,7 @@ return(
   {(formName === 'registerForm') && (
   <>
     <label 
-    className="input input-bordered flex items-center gap-2">
+    className="formLabel input input-bordered flex items-center gap-2">
     <input 
     className="grow"
     {...register('name', { onChange: handleInputChange })}
@@ -161,7 +161,7 @@ return(
   </>
   )}
   <label 
-  className="input input-bordered flex items-center gap-2">
+  className="formLabel input input-bordered flex items-center gap-2">
   <input
   className="grow" 
   {...register('email', { onChange: handleInputChange })}
@@ -171,7 +171,7 @@ return(
   />
   </label>
   <label 
-  className="input input-bordered flex items-center gap-2">
+  className="formLabel input input-bordered flex items-center gap-2">
     <input
     className="grow"
        {...register('password')}
