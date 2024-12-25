@@ -12,17 +12,12 @@ const DashboardPage =  async() => {
       </div>
     );
   }
-  const user = session?.user
-  const userName = user?.name;
-  const userEmail = user?.email;
-  const userRole = user?.role
- 
-
+  const { user } = session;
   return (
     <div className="grid gap-1 h-full">
-      <p>Logged in as {userName && capitalize(userName) || 'User'}</p>
-      <p>with email {userEmail}</p>
-      <p>with role {userRole}</p>
+      <p>Logged in as {capitalize(user?.name) || "User"}</p>
+      <p>With email {user?.email}</p>
+      <p>With role {user?.role}</p>
     </div>
   );
 };
