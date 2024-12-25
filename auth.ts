@@ -9,7 +9,7 @@ import { JWT } from "next-auth/jwt";
 import { getCookie, deleteCookie } from "cookies-next";
 
 // Helper function for token revalidation
-async function revalidateSession(token: string | undefined) {
+export async function revalidateSession(token: string | undefined) {
   if (!token) {
     return null;
   }
