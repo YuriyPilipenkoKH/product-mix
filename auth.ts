@@ -6,6 +6,29 @@ import { compare } from "bcrypt-ts";
 import prisma from "@/lib/prisma";
 import { connectMongoDB } from "@/lib/mongo";
 import { JWT } from "next-auth/jwt";
+import { getCookie, deleteCookie } from "cookies-next";
+
+// Helper function for token revalidation
+async function revalidateSession(token: string | undefined) {
+  if (!token) {
+    return null;
+  }
+  try {
+    const response = await fetch(`${process.env.NEXTAUTH_URL}/api/revalidate-session`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    });
+    const result = await response.json();
+    if (result?.valid) {
+      return result.session;
+    }
+    deleteCookie("authToken"); // Clear invalid tokens
+  } catch (error) {
+    console.error("Error revalidating session:", error);
+  }
+  return null;
+}
 
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -131,17 +154,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           if (!existingUser) {
             console.error("user not found");
             return false;
-            // Create a new user in the database
-            // await prisma.user.create({
-            //   data: {
-            //     email: user.email,
-            //     name: user.name || "Unknown",
-            //     role: "user", // Default role
-            //     password: "placeholder_password", // Use a placeholder password
-            //     // createdAt: new Date(), // Ensure createdAt is included
-            //     // updatedAt: new Date(), // Ensure updatedAt is included
-            //   },
-            // });
+
           }
         } catch (error) {
           console.error("Error while creating user:", error);

@@ -11,7 +11,8 @@ export const RegisterSchema = z.object({
             message: 'Enter a different name'
           })
          .superRefine((val, ctx) => {
-            const forbidden = process.env.NAMES_TO_AVOID?.split(",").map((name) => name.toLowerCase()) || [];
+            const forbidden = process.env.NAMES_TO_AVOID?.split(",")
+              .map((name) => name.toLowerCase()) || [];
             if (forbidden.includes(val.toLowerCase())) {
               ctx.addIssue({
                 code: z.ZodIssueCode.custom,
