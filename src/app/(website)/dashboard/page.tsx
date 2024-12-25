@@ -5,6 +5,13 @@ import React from 'react';
 
 const DashboardPage =  async() => {
   const session = await getSession();
+  if (!session) {
+    return (
+      <div>
+        <p>Session expired or invalid. Please log in again.</p>
+      </div>
+    );
+  }
   const user = session?.user
   const userName = user?.name;
   const userEmail = user?.email;
