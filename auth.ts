@@ -6,29 +6,6 @@ import { compare } from "bcrypt-ts";
 import prisma from "@/lib/prisma";
 import { connectMongoDB } from "@/lib/mongo";
 import { JWT } from "next-auth/jwt";
-import { getCookie, deleteCookie } from "cookies-next";
-
-// Helper function for token revalidation
-export async function revalidateSession(token: string | undefined) {
-  if (!token) {
-    return null;
-  }
-  try {
-    const response = await fetch(`${process.env.NEXTAUTH_URL}/api/revalidate-session`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token }),
-    });
-    const result = await response.json();
-    if (result?.valid) {
-      return result.session;
-    }
-    deleteCookie("authToken"); // Clear invalid tokens
-  } catch (error) {
-    console.error("Error revalidating session:", error);
-  }
-  return null;
-}
 
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
