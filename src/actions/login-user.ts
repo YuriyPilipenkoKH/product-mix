@@ -6,6 +6,8 @@ import { revalidatePath } from "next/cache";
 import { compare } from 'bcrypt-ts'
 
 export const loginUser = async(formData: FormData) => {
+  // const rawFormData = Object.entries(formData)
+  // console.log("rawFormData",rawFormData);
   const email = formData.get('email') as string | null;
   const password = formData.get('password') as string | null;
 
