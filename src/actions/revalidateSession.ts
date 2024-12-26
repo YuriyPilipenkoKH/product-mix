@@ -26,7 +26,11 @@ export async function revalidateSession() {
  }
 
  // Get the token using headers
- const token = await getToken({ req: { headers: { cookie: cookieHeader } } });
+ const token = await getToken({
+   req: { headers: { cookie: cookieHeader } },
+   secret: process.env.AUTH_SECRET, // Explicitly pass the secret
+
+  });
 
   if (!token || !token.id) {
     return null;
