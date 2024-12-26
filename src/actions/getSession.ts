@@ -11,7 +11,7 @@ export const getSession = cache(async () => {
 });
 
 // export const getSession = async () => {
-//   const token = getCookie("authToken");
+//   const token = getCookie("authjs.csrf-token");
 //   const session = await revalidateSession();
 //   return session;
 // };
