@@ -7,9 +7,14 @@
 }
 .AuthForm>.formLabel{
   color: #222;
+  font-weight: 600;
 }
-.AuthForm>.highlight{
+.AuthForm>.highlight-error{
   border: 2px solid crimson;
+  color: #222;
+}
+.AuthForm>.highlight-success{
+  color:  green;
 }
 
 .autherror {

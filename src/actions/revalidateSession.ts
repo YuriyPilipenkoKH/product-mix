@@ -12,14 +12,17 @@ export async function revalidateSession() {
 
   // Construct headers object from cookies
  // Manually build the cookie string by accessing cookies by name
- const cookieNames = ["next-auth.session-token", "another-cookie-name","authjs.csrf-token","authjs.session-token"]; // Replace with your actual cookie names
+ const cookieNames = ["authjs.csrf-token","authjs.session-token"]; // Replace with your actual cookie names
+
+ 
  const cookieHeader = cookieNames
-   .map((cookieName) => {
-     const cookieValue = cookieStore.get(cookieName);
-     return cookieValue ? `${cookieName}=${cookieValue}` : null;
-   })
-   .filter(Boolean)
-   .join("; ");
+ .map((cookieName) => {
+   const cookieValue = cookieStore.get(cookieName);
+   return cookieValue ? `${cookieName}=${cookieValue}` : null;
+  })
+  .filter(Boolean)
+  .join("; ");
+  console.log(cookieHeader);
 
  if (!cookieHeader) {
    return null;

@@ -151,7 +151,7 @@ return(
   <>
     <label 
     className={cn("formLabel input input-bordered flex items-center gap-2",
-      isRegisterErrors(errors) && 'highlight'
+      isRegisterErrors(errors)? 'highlight-error':'highlight-success',
     )}>
     <input 
      className={cn('grow' )}
@@ -165,7 +165,7 @@ return(
   )}
   <label 
   className={cn("formLabel input input-bordered flex items-center gap-2",
-    errors.email || logError && 'highlight'
+    (errors.email || logError) ? 'highlight-error':'highlight-success',
   )}>
   <input
   className={cn('grow' )} 
@@ -177,7 +177,7 @@ return(
   </label>
   <label 
     className={cn("formLabel input input-bordered flex items-center gap-2",
-      errors.password && 'highlight'
+      errors.password ? 'highlight-error':'highlight-success',
     )}>
     <input
     className={cn('grow' )}
