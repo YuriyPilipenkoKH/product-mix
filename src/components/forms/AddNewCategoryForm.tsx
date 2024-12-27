@@ -24,6 +24,12 @@ export const AddNewCategoryForm: React.FC<AddNewCategoryFormProps> = ({
 				mode:'all',
 				resolver: zodResolver(addNewCategorySchema),
 		})
+    const {
+			errors,
+			isDirty,
+			isValid ,
+			isSubmitting,
+		} = formState
   return (
     <div>AddNewCategoryForm</div>
   )
