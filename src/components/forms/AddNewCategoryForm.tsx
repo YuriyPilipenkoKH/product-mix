@@ -31,7 +31,9 @@ export const AddNewCategoryForm: React.FC<AddNewCategoryFormProps> = ({
 			isSubmitting,
 		} = formState
     const onSubmit = async (data: addNewCategorySchemaType) => {
-      
+      const formData = new FormData();
+			formData.append('name', data.name);
+			formData.append('creator', creator);
     }
   return (
     <div>AddNewCategoryForm</div>
