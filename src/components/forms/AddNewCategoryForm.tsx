@@ -44,7 +44,26 @@ export const AddNewCategoryForm: React.FC<AddNewCategoryFormProps> = ({
       }
     }
   return (
-    <div>AddNewCategoryForm</div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+				hidden
+				id='creator'
+				name='creator'
+				defaultValue={creator}
+				/>
+			<input 
+			 {...register('name')}
+				 placeholder=	{( isSubmitting ) 
+				? "Process" 
+				: 'category name'}
+			/>
+			<button
+			type='submit'
+			disabled={isSubmitting || !isDirty || !isValid}
+						>
+				Add
+			</button>
+    </form>
   )
 }
 
