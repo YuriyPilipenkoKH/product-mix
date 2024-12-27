@@ -1,3 +1,4 @@
+'use client'
 import { addNewCategorySchema, addNewCategorySchemaType } from '@/models/addCategory'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useState } from 'react'

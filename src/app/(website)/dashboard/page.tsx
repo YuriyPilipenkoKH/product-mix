@@ -3,6 +3,7 @@ import capitalize from '@/lib/capitalize';
 import { getSession } from '@/actions/getSession';
 import { redirect } from 'next/navigation';
 import React from 'react';
+import AddNewCategoryForm from '@/components/forms/AddNewCategoryForm';
 
 
 const DashboardPage =  async() => {
@@ -22,6 +23,7 @@ const DashboardPage =  async() => {
       <p>Logged in as {capitalize(user?.name) || "User"}</p>
       <p>With email {user?.email}</p>
       <p>With role {user?.role}</p>
+      <AddNewCategoryForm creator={user.id}/>
     </div>
   );
 };
