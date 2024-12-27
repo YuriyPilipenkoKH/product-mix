@@ -1,4 +1,4 @@
-import { revalidateSession } from '@/actions/revalidateSession';
+
 import capitalize from '@/lib/capitalize';
 import { getSession } from '@/actions/getSession';
 import { redirect } from 'next/navigation';

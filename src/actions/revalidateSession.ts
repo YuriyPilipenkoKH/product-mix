@@ -22,7 +22,7 @@ export async function revalidateSession() {
   })
   .filter(Boolean)
   .join("; ");
-  console.log(cookieHeader);
+  // console.log(cookieHeader);
 
  if (!cookieHeader) {
    return null;
