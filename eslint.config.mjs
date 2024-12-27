@@ -10,20 +10,35 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Extend the core recommended and Next.js-specific ESLint configs
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      // Adjust the rule to only show warnings or disable it for specific scenarios
+      // Allow unused variables if they start with `_`
       "@typescript-eslint/no-unused-vars": [
-        "warn", // Change to "off" to completely disable
+        "warn", // Set to "warn" to show warnings, or "off" to disable completely
         {
           vars: "all",
           args: "after-used",
           ignoreRestSiblings: true,
-          varsIgnorePattern: "^_", // Ignore variables starting with _
-          argsIgnorePattern: "^_", // Ignore function arguments starting with _
+          varsIgnorePattern: "^_", // Ignore unused variables starting with `_`
+          argsIgnorePattern: "^_", // Ignore unused arguments starting with `_`
         },
       ],
+      // Add any other rules as needed
+    },
+  },
+  {
+    // Parser and environment settings
+    files: ["**/*.ts", "**/*.tsx"], // Apply to TypeScript files
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 2023,
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
   },
 ];
