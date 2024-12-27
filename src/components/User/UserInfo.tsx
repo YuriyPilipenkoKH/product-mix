@@ -4,6 +4,7 @@ import capitalize from '@/lib/capitalize';
 
 const UserInfo = async () => {
     const session = await getSession();
+    const { user } = session;
   return (
     <div>UserInfo</div>
   )
