@@ -36,6 +36,8 @@ export const AddNewCategoryForm: React.FC<AddNewCategoryFormProps> = ({
       const formData = new FormData();
 			formData.append('name', data.name);
 			formData.append('creator', creator);
+      console.log(data, creator);
+      
       try {
         
       } catch (error) {
