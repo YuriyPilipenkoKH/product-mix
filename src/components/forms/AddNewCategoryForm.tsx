@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 interface AddNewCategoryFormProps {
 	creator: string
@@ -7,6 +7,7 @@ interface AddNewCategoryFormProps {
 export const AddNewCategoryForm: React.FC<AddNewCategoryFormProps> = ({
 	creator
 	}) => {
+    const [logError, setLogError] = useState<string>('')
   return (
     <div>AddNewCategoryForm</div>
   )
