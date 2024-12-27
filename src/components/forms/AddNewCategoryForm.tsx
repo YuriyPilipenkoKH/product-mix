@@ -1,6 +1,12 @@
 import React from 'react'
 
-const AddNewCategoryForm = () => {
+interface AddNewCategoryFormProps {
+	creator: string
+}
+
+export const AddNewCategoryForm: React.FC<AddNewCategoryFormProps> = ({
+	creator
+	}) => {
   return (
     <div>AddNewCategoryForm</div>
   )
