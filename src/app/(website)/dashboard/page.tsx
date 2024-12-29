@@ -15,7 +15,7 @@ const DashboardPage =  async() => {
     //   </div>
     // );
   }
-  const { user } = session;
+  // const { user } = session;
   return (
     <div className="grid gap-1 h-full">
 
