@@ -106,12 +106,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }
     ,
     async jwt({ token, user }: { token: JWT; user?: User }) {
-      if (user) {
-        token.id = user.id as string;
-        token.role = user.role as string;
+      try {
+        if (user) {
+          token.id = user.id as string;
+          token.role = user.role as string;
+        }
+        return token;
+      } catch (error) {
+        console.error("Error in JWT callback:", error);
+        // Optionally, handle the error or modify the token to reflect an issue
+        return token; // Ensure the token is returned even in case of an error
       }
-      return token;
-    },
+    }
+    ,
     async signIn({
       user,
       account,
