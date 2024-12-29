@@ -7,7 +7,7 @@ const globalForPrisma = global as typeof global & {
 };
 
 // const prisma = globalForPrisma.prisma ?? new PrismaClient();
-export const prisma =
+const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
     log: ['query', 'info', 'warn', 'error'], // Optional logging
