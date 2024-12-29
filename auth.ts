@@ -78,7 +78,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           console.error("Error in authorize function:", error);
           throw new Error("Authorization failed. Please check your credentials.");
         }
-      }
+      },
       
     }),
   ],
@@ -88,16 +88,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     async session({ session, token }: { session: Session; token: JWT }) {
-      if (session.user) {
-        if (token?.id) {
-          session.user.id = token.id as string;
+      try {
+        if (session.user) {
+          if (token?.id) {
+            session.user.id = token.id as string;
+          }
+          if (token?.role) {
+            session.user.role = token.role as string;
+          }
         }
-        if (token?.role) {
-          session.user.role = token.role as string;
-        }
+        return session;
+      } catch (error) {
+        console.error("Error in session callback:", error);
+        // Optionally, return the session as-is or null in case of an error
+        return session;
       }
-      return session;
-    },
+    }
+    ,
     async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
         token.id = user.id as string;
