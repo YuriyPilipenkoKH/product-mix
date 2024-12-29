@@ -34,48 +34,52 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const email = credentials.email as string | undefined;
-        const password = credentials.password as string | undefined;
-
-        if (!email || !password) {
-          throw new Error("Please provide both email and password.");
+        try {
+          const email = credentials.email as string | undefined;
+          const password = credentials.password as string | undefined;
+      
+          if (!email || !password) {
+            throw new Error("Please provide both email and password.");
+          }
+      
+          await connectMongoDB();
+      
+          // Fetch the user from the database
+          const user = await prisma.user.findUnique({
+            where: { email },
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              password: true,
+              role: true,
+            },
+          });
+      
+          if (!user || !user.password) {
+            throw new Error("Invalid email or password.");
+          }
+      
+          // Verify the password
+          const isMatched = await compare(password, user.password);
+      
+          if (!isMatched) {
+            throw new Error("Password did not match.");
+          }
+      
+          // Return the user object
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+          };
+        } catch (error) {
+          console.error("Error in authorize function:", error);
+          throw new Error("Authorization failed. Please check your credentials.");
         }
-        await connectMongoDB();
-
-        // Fetch the user from the database
-        const user = await prisma.user.findUnique({
-          where: { email },
-          select: {
-            id: true,
-            name: true,
-            email: true,
-            password: true,
-            role: true,
-            // createdAt: true,
-            // updatedAt: true, // Include these fields
-          },
-        });
-
-        if (!user || !user.password) {
-          throw new Error("Invalid email or password.");
-        }
-
-        // Verify the password
-        const isMatched = await compare(password, user.password);
-
-        if (!isMatched) {
-          throw new Error("Password did not match.");
-        }
-
-        // Return the user object
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          password: user.password, // Include password
-        };
-      },
+      }
+      
     }),
   ],
   pages: {

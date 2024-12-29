@@ -9,11 +9,7 @@ const DashboardPage =  async() => {
   // const session = await revalidateSession();
   if (!session) {
     redirect('/login'); 
-    // return (
-    //   <div>
-    //     <p>Session expired or invalid. Please log in again.</p>
-    //   </div>
-    // );
+
   }
   // const { user } = session;
   return (
