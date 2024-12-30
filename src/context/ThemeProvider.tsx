@@ -11,6 +11,13 @@ function ThemeProvider({children} : {children:ReactNode}) {
     const storedTheme = localStorage.getItem('theme') || 'dark'
     setTheme(storedTheme)
       }, [])
+  if (!isMounted) {
+    return <>Loading....</>
+  }
+  const changeTheme =(theme:string) => {
+    setTheme(theme)
+    localStorage.setItem("theme", theme)
+  }
   
   return (
     <ThemeContext.Provider value={{ 
