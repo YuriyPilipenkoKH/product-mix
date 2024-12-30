@@ -29,18 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-      data-theme="dark"
+      // data-theme="dark"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
           <ClientThemeWrapper>
             {children}
+          <Toaster 
+            position="top-center" 
+            toastOptions={options} 
+            gutter={24} />
           </ClientThemeWrapper>
         </ThemeProvider>
-        <Toaster 
-          position="top-center" 
-          toastOptions={options} 
-          gutter={24} />
       </body>
     </html>
   );

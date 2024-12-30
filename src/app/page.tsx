@@ -1,7 +1,11 @@
+"use client"
+import ThemeContext, { ThemeTypes } from "@/context/ThemeContext";
 import Link from "next/link";
+import { useContext } from "react";
 
 
 export default function Home() {
+  const {theme, setTheme} =  useContext(ThemeContext as React.Context<ThemeTypes>)
   return (
     <div
       className="hero min-h-screen"
