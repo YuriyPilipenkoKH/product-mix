@@ -1,6 +1,8 @@
 "use client"
 import ThemeContext, { ThemeTypes } from "@/context/ThemeContext";
 import { useContext, useState } from "react";
+import { FlatBtn } from "./Button";
+import { ImCross } from "react-icons/im";
 
 const ThemeChanger = () => {
   const [open, setOpen] = useState(false)
@@ -8,7 +10,7 @@ const ThemeChanger = () => {
   return (
     <>
     {open ? (
-      <div className="flex flex-col gap-1 ">
+      <div className="theme-changer flex flex-col gap-1  ">
         <button
          className="btn"
          onClick={()=>changeTheme('light')}
@@ -33,6 +35,11 @@ const ThemeChanger = () => {
         >
           din
           </button>
+          <FlatBtn 
+          className="absolute top-[-8px] right-[-8px]"
+          onClick={()=>setOpen(!open)}>
+          <ImCross scale={0.5} />
+          </FlatBtn>
       </div>
     ) : (
       <div>

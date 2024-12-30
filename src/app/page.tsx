@@ -1,3 +1,4 @@
+import ThemeChanger from "@/components/Button/ThemeChanger";
 import Link from "next/link";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
             href='/dashboard'>Get Started</Link>
           </button>
         </div>
+        <ThemeChanger/>
       </div>
     </div>
   );
