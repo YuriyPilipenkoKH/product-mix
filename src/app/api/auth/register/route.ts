@@ -1,5 +1,5 @@
 import { connectMongoDB, disconnectMongoDB } from "@/lib/mongo"
-import prisma from "@/lib/prisma"
+import prisma from "../../../../../prisma/prisma"
 import { NextResponse } from "next/server"
 import {  hashSync} from "bcrypt-ts";
 

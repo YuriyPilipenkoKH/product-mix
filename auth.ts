@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import { compare } from "bcrypt-ts";
-import prisma from "@/lib/prisma";
+import prisma from "./prisma/prisma";
 import { connectMongoDB } from "@/lib/mongo";
 import { JWT } from "next-auth/jwt";
 

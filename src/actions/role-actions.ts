@@ -1,7 +1,7 @@
 'use server'
 
 // import { auth } from "@/app/api/auth/[...nextauth]/route"
-import prisma from "@/lib/prisma"
+import prisma from "../../prisma/prisma"
 import { z } from "zod"
 import { auth } from "../../auth"
 

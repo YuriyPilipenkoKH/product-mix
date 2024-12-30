@@ -1,7 +1,7 @@
 "use server";
 
 import { getToken } from "next-auth/jwt";
-import prisma from "@/lib/prisma";
+import prisma from "../../prisma/prisma";
 import { cookies } from "next/headers";
 
 
