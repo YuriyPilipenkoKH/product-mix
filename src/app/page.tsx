@@ -17,7 +17,9 @@ export default function Home() {
             href='/dashboard'>Get Started</Link>
           </button>
         </div>
-        <ThemeChanger/>
+        <div className="absolute top-5 right-5">
+          <ThemeChanger/>
+        </div>
       </div>
     </div>
   );

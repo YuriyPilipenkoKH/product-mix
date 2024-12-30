@@ -3,6 +3,7 @@ import ThemeContext, { ThemeTypes } from "@/context/ThemeContext";
 import { useContext, useState } from "react";
 import { FlatBtn } from "./Button";
 import { ImCross } from "react-icons/im";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const ThemeChanger = () => {
   const [open, setOpen] = useState(false)
@@ -29,16 +30,11 @@ const ThemeChanger = () => {
         >
           aqua
           </button>
-        <button
-         className="btn"
-         onClick={()=>changeTheme('din')}
-        >
-          din
-          </button>
+
           <FlatBtn 
-          className="absolute top-[-8px] right-[-8px]"
+          className="close-theme absolute top-[-8px] right-[-8px]"
           onClick={()=>setOpen(!open)}>
-          <ImCross scale={0.5} />
+          <AiOutlineCloseCircle />
           </FlatBtn>
       </div>
     ) : (
