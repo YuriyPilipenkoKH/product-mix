@@ -2,12 +2,14 @@
 import ThemeContext, { ThemeTypes } from "@/context/ThemeContext";
 import { useContext, useState } from "react";
 import { FlatBtn } from "./Button";
-import { ImCross } from "react-icons/im";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { SlClose } from "react-icons/sl";
+import { HiOutlineLightBulb } from "react-icons/hi2";
+import { FaRegMoon } from "react-icons/fa6";
+import { MdOutlineWaterDrop } from "react-icons/md";
 
 const ThemeChanger = () => {
   const [open, setOpen] = useState(false)
-  const {theme, setTheme, changeTheme} =  useContext(ThemeContext as React.Context<ThemeTypes>)
+  const {theme,  changeTheme} =  useContext(ThemeContext as React.Context<ThemeTypes>)
   return (
     <>
     {open ? (
@@ -34,12 +36,16 @@ const ThemeChanger = () => {
           <FlatBtn 
           className="close-theme absolute top-[-8px] right-[-8px]"
           onClick={()=>setOpen(!open)}>
-          <AiOutlineCloseCircle />
+          <SlClose />
           </FlatBtn>
       </div>
     ) : (
       <div>
-        <button onClick={()=>setOpen(!open)}>theme</button>
+        <button onClick={()=>setOpen(!open)}>
+          {theme === 'light' && <HiOutlineLightBulb/>}
+          {theme === 'dark' && <FaRegMoon/>}
+          {theme === 'aqua' && <MdOutlineWaterDrop/>}
+        </button>
       </div>
     )}
     </>
