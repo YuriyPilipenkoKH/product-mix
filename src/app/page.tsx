@@ -1,18 +1,8 @@
-"use client"
-import ThemeContext, { ThemeTypes } from "@/context/ThemeContext";
 import Link from "next/link";
-import { useContext } from "react";
-
 
 export default function Home() {
-  const {theme, setTheme} =  useContext(ThemeContext as React.Context<ThemeTypes>)
   return (
-    <div
-      className="hero min-h-screen"
-      // style={{
-      //   backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-      // }}
-      >
+    <div  className="hero min-h-screen" >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
@@ -27,6 +17,6 @@ export default function Home() {
           </button>
         </div>
       </div>
-  </div>
+    </div>
   );
 }
