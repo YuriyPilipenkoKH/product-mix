@@ -24,7 +24,8 @@ function ThemeProvider({children} : {children:ReactNode}) {
       theme, 
       setTheme,
       isMounted,
-      setIsMounted
+      setIsMounted,
+      changeTheme
       }}>
       {children}
     </ThemeContext.Provider>

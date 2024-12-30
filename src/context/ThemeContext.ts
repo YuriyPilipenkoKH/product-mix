@@ -5,6 +5,7 @@ export interface ThemeTypes  {
   setTheme : Dispatch<string>
   isMounted : boolean
   setIsMounted: Dispatch<boolean>
+  changeTheme: Dispatch<string> 
 }
 
 export const ThemeContext =  createContext<ThemeTypes | null>(null);
