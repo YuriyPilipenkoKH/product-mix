@@ -1,7 +1,4 @@
-import React, { createContext, Dispatch } from "react";
-
-
-export const ThemeContext =  createContext(null)
+import  { createContext, Dispatch } from "react";
 
 export interface ThemeTypes  {
   theme: string
@@ -9,3 +6,6 @@ export interface ThemeTypes  {
   isMounted : boolean
   setIsMounted: Dispatch<boolean>
 }
+
+export const ThemeContext =  createContext<ThemeTypes | null>(null);
+export default ThemeContext
