@@ -6,7 +6,7 @@ import { options } from "@/lib/hotToast";
 import ThemeProvider from "@/context/ThemeProvider";
 import ClientThemeWrapper from "@/context/ClientThemeWrapper";
 import { getSession } from "@/actions/get-session";
-import { SessionProvider } from "@/context/SessionContext";
+import { defaultSession, SessionProvider } from "@/context/SessionContext";
 
 
 const geistSans = Geist({
@@ -29,8 +29,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getSession();
-  if(!session) return null
+  const session = await getSession() || defaultSession
+
   return (
     <html lang="en">
       <body

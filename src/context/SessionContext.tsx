@@ -32,3 +32,13 @@ export const SessionProvider = ({
     </SessionContext.Provider>
   );
 };
+
+export const defaultSession = {
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    role: "user",
+  },
+  expires:''
+};
