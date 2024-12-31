@@ -7,6 +7,7 @@ import ThemeProvider from "@/context/ThemeProvider";
 import ClientThemeWrapper from "@/context/ClientThemeWrapper";
 import { getSession } from "@/actions/get-session";
 import { defaultSession, SessionProvider } from "@/context/SessionContext";
+import Header from "@/components/Header";
 
 
 const geistSans = Geist({
@@ -40,6 +41,7 @@ export default async function RootLayout({
         <SessionProvider session={session}> 
         <ThemeProvider>
           <ClientThemeWrapper>
+            <Header session={session}/>
             {children}
           <Toaster 
             position="top-center" 
