@@ -26,7 +26,7 @@ async function Layout({ children }: Props) {
         <div className="min-h-screen flex flex-col items-center  gap-2 bg-[var(--website-bg)]">
           <WebNavBar session={session} />
           <div className="flex gap-2">
-            <h2>Website</h2>      
+            <h2>Product Mix</h2>      
           </div>
           {/* {React.cloneElement(children, { session })} */}
           {children}

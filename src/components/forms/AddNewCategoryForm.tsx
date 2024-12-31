@@ -60,6 +60,7 @@ export const AddNewCategoryForm: React.FC<AddNewCategoryFormProps> = ({
 				: 'category name'}
 			/>
 			<button
+			className='btn' 
 			type='submit'
 			disabled={isSubmitting || !isDirty || !isValid}
 						>
