@@ -1,20 +1,19 @@
+'use client'
 import React from 'react'
-
 import capitalize from '@/lib/capitalize';
-import { redirect } from 'next/navigation';
+import { useSessionContext } from '@/context/SessionContext';
 
 
-const UserInfo = async () => {
 
-    //   if (!session) {
-    //     redirect('/login'); 
-    //   }
-    // const { user } = session;
+const UserInfo = () => {
+
+ const {session} = useSessionContext()
+    const { user } = session;
   return (
     <div>
-      {/* <p>Logged in as {capitalize(user?.name) || "User"}</p>
+      <p>Logged in as {capitalize(user?.name) || "User"}</p>
       <p>With email {user?.email}</p>
-      <p>With role {user?.role}</p> */}
+      <p>With role {user?.role}</p>
     </div>
   )
 }

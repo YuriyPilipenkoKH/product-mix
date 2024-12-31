@@ -1,6 +1,4 @@
 
-// import { redirect } from "next/navigation";
-
 
 const AdminPage =async () => {
 
@@ -13,6 +11,7 @@ const AdminPage =async () => {
     <>
       {/* {userRole === 'admin' && ( */}
         <h2>Admin page</h2>
+
       {/* )} */}
     </>
   )
