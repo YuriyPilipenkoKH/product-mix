@@ -1,6 +1,14 @@
+
+import { Session } from 'next-auth'
 import React from 'react'
 
-const Header = () => {
+interface HeaderProps {
+  session: Session
+}
+
+const Header:React.FC<HeaderProps > = ({session}) => {
+  const user = session?.user
+
   return (
     <div>Header</div>
   )
