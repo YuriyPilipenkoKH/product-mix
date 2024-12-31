@@ -1,8 +1,20 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
+import AddNewCategoryForm from '../forms/AddNewCategoryForm'
+
 
 const AddNewCategoryUI = () => {
+  const [show, setShow] = useState(false)
   return (
-    <div>AddNewCategoryUI</div>
+    <>
+    {show ? (
+        <AddNewCategoryForm creator='key'/>
+    ) : (
+      <button>
+        Add Category
+      </button>
+    )}
+    </>
   )
 }
 

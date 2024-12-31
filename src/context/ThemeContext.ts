@@ -8,5 +8,5 @@ export interface ThemeTypes  {
   changeTheme: Dispatch<string> 
 }
 
-export const ThemeContext =  createContext<ThemeTypes | null>(null);
+const ThemeContext =  createContext<ThemeTypes | null>(null);
 export default ThemeContext
