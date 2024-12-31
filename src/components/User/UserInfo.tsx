@@ -6,15 +6,15 @@ import { redirect } from 'next/navigation';
 
 const UserInfo = async () => {
 
-      if (!session) {
-        redirect('/login'); 
-      }
-    const { user } = session;
+    //   if (!session) {
+    //     redirect('/login'); 
+    //   }
+    // const { user } = session;
   return (
     <div>
-      <p>Logged in as {capitalize(user?.name) || "User"}</p>
+      {/* <p>Logged in as {capitalize(user?.name) || "User"}</p>
       <p>With email {user?.email}</p>
-      <p>With role {user?.role}</p>
+      <p>With role {user?.role}</p> */}
     </div>
   )
 }

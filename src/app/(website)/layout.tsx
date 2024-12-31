@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { Session } from 'next-auth';
 import React from 'react';
 import WebNavBar from '@/components/Website/WebNavBar';
+import { getSession } from '@/actions/get-session';
 // import { revalidateSession } from '@/actions/revalidateSession';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 }
 
 async function Layout({ children }: Props) {
-  // const session1 = await revalidateSession();
+  const session = await getSession();
 
 //  console.log('session1',session1, "session" ,session);
    if (!session) {

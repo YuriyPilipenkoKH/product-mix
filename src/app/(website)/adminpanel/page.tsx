@@ -1,19 +1,19 @@
 
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 
 const AdminPage =async () => {
 
-  const user = session?.user
-  const userRole = user?.role;
+  // const user = session?.user
+  // const userRole = user?.role;
   
-  if(userRole !== 'admin') redirect('/dashboard')
+  // if(userRole !== 'admin') redirect('/dashboard')
   
   return (
     <>
-      {userRole === 'admin' && (
+      {/* {userRole === 'admin' && ( */}
         <h2>Admin page</h2>
-      )}
+      {/* )} */}
     </>
   )
 }
