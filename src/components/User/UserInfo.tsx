@@ -1,11 +1,11 @@
 import React from 'react'
-import { getSession } from '@/actions/getSession';
+
 import capitalize from '@/lib/capitalize';
 import { redirect } from 'next/navigation';
 
 
 const UserInfo = async () => {
-    const session = await getSession();
+
       if (!session) {
         redirect('/login'); 
       }

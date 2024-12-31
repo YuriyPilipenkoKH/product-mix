@@ -1,4 +1,4 @@
-import { getSession } from '@/actions/getSession';
+
 import { redirect } from 'next/navigation';
 import { Session } from 'next-auth';
 import React from 'react';
@@ -11,12 +11,9 @@ interface Props {
 
 async function Layout({ children }: Props) {
   // const session1 = await revalidateSession();
-  const session = await getSession();
 
 //  console.log('session1',session1, "session" ,session);
- 
-
-  if (!session) {
+   if (!session) {
     redirect('/login'); 
   }
 

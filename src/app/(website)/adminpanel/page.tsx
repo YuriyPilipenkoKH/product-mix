@@ -1,9 +1,9 @@
-import { getSession } from "@/actions/getSession"
+
 import { redirect } from "next/navigation";
 
 
 const AdminPage =async () => {
-  const session = await getSession()
+
   const user = session?.user
   const userRole = user?.role;
   

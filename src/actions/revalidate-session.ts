@@ -5,7 +5,6 @@ import prisma from "../../prisma/prisma";
 import { cookies } from "next/headers";
 
 
-
 export async function revalidateSession() {
   // Retrieve the cookies
   const cookieStore = await cookies(); 

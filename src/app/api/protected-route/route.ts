@@ -1,4 +1,4 @@
-import { revalidateSession } from "@/actions/revalidateSession";
+import { revalidateSession } from "@/actions/revalidate-session";
 
 export async function GET(req: Request) {
   const session = await revalidateSession();
