@@ -1,4 +1,5 @@
 import ThemeChanger from "@/components/Button/ThemeChanger";
+import Header from "@/components/Header";
 import Link from "next/link";
 
 export default function Home() {
@@ -12,12 +13,13 @@ export default function Home() {
           <p className="mb-5">
             The Product Mix app is a modern web application that leverages server actions to securely handle product management directly on the server side. This app allows users to store, organize, and manage different products in a database using intuitive CRUD operations.
           </p>
-          <button className="btn btn-primary">
+          <button className="btn ">
             <Link 
             href='/dashboard'>Get Started</Link>
           </button>
         </div>
-        <div className="absolute top-5 right-5">
+        <div className="absolute top-5 right-5 flex items-baseline gap-5">
+        <Header />
           <ThemeChanger/>
         </div>
       </div>

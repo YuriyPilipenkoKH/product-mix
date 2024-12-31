@@ -3,12 +3,12 @@ import { Session } from 'next-auth'
 import React from 'react'
 import { LogoutButton } from './Button/Button'
 import Link from 'next/link'
+import { getSession } from '@/actions/get-session'
 
-interface HeaderProps {
-  session: Session
-}
 
-const Header:React.FC<HeaderProps > = ({session}) => {
+
+const Header = async() => {
+    const session = await getSession()
   const user = session?.user
 
   return (
@@ -16,7 +16,9 @@ const Header:React.FC<HeaderProps > = ({session}) => {
       {session ? (
       <LogoutButton />
       ) : (
-      <Link href='/login'>Login</Link>
+        <button className='btn'>
+          <Link href='/login'>Login</Link>
+        </button>
       )}
     </div>
   )
