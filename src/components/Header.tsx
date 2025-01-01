@@ -12,7 +12,7 @@ const Header = async() => {
   const user = session?.user
 
   return (
-    <div className='flex items-center justify-end px-4'>
+    <div className='Header flex items-center justify-end px-4'>
       {session ? (
       <LogoutButton />
       ) : (
