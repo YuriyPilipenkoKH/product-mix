@@ -15,7 +15,7 @@ const Header = async() => {
       {session ? (
       <LogoutButton />
       ) : (
-        <button className='btn'>
+        <button className='btn login-btn'>
           <Link href='/login'>Login</Link>
         </button>
       )}

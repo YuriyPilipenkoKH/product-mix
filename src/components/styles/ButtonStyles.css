@@ -40,7 +40,8 @@
   min-height: 32px;
 }
 
-.Header>.logout-btn {
+.Header>.logout-btn ,
+.Header>.login-btn {
   height: 32px ;
   min-height: 32px;
 }
