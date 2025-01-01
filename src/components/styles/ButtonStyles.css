@@ -35,3 +35,12 @@
 .theme-changer>.close-theme >svg{
     fill: var(--background-color) ;
 }
+.theme-changer>.btn{
+  height: 32px ;
+  min-height: 32px;
+}
+
+.Header>.logout-btn {
+  height: 32px ;
+  min-height: 32px;
+}
