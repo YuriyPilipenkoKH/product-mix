@@ -1,5 +1,4 @@
 
-import { Session } from 'next-auth'
 import React from 'react'
 import { LogoutButton } from './Button/Button'
 import Link from 'next/link'

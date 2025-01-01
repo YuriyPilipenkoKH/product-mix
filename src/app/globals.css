@@ -112,6 +112,10 @@ img {
   @apply py-0 px-3 leading-3;
 
 }
+.Header>.logout-btn {
+  height: 32px ;
+  min-height: 32px;
+}
 
 
 
