@@ -1,14 +1,13 @@
-'use client'
+// 'use client'
 import React from 'react'
 import capitalize from '@/lib/capitalize';
-import { useSessionContext } from '@/context/SessionContext';
+import { getSession } from '@/actions/get-session';
 
 
 
-const UserInfo = () => {
-
- const {session} = useSessionContext()
-    const { user } = session;
+const UserInfo =async() => {
+    const session =  await getSession()
+const user = session?.user
   return (
     <div>
       <p>Logged in as {capitalize(user?.name) || "User"}</p>
