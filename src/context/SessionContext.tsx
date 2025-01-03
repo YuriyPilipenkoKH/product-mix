@@ -5,11 +5,12 @@
 import { Session } from 'next-auth';
 import React, { createContext, useContext } from 'react';
 
-interface SessionContextType {
+export interface SessionContextType {
   session: Session; // Replace with your session type if available
 }
 
-const SessionContext = createContext<SessionContextType | undefined>(undefined);
+ export const SessionContext = createContext<SessionContextType | undefined>(undefined);
+
 
 export const useSessionContext = () => {
   const context = useContext(SessionContext);
@@ -19,7 +20,7 @@ export const useSessionContext = () => {
   return context;
 };
 
-export const SessionProvider = ({
+ const SessionProvider = ({
   session,
   children,
 }: {
@@ -32,6 +33,7 @@ export const SessionProvider = ({
     </SessionContext.Provider>
   );
 };
+export default  SessionProvider
 
 export const defaultSession = {
   user: {

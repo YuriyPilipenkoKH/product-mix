@@ -1,12 +1,16 @@
-// 'use client'
-import React from 'react'
+'use client'
+import React, { useContext } from 'react'
 import capitalize from '@/lib/capitalize';
-import { getSession } from '@/actions/get-session';
+// import { getSession } from '@/actions/get-session';
+import { SessionContext, SessionContextType } from '@/context/SessionContext';
 
 
 
-const UserInfo =async() => {
-    const session =  await getSession()
+
+
+const UserInfo =() => {
+  const {session} = useContext(SessionContext as React.Context<SessionContextType>);
+//     const session =  await getSession()
 const user = session?.user
   return (
     <div>

@@ -4,9 +4,11 @@ import AuthForm from '@/components/forms/AuthForm'
 import { LoginFormProps } from '@/data/formProps'
 import { redirect } from 'next/navigation';
 import React from 'react'
+import { auth } from '../../../../auth';
 
 const LoginPage = async () => {
-  const session = await getSession();
+  const session = await auth();
+  // const session = await getSession();
   if (session) {
     redirect('/dashboard')
   }
