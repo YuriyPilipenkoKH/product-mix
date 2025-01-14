@@ -1,5 +1,3 @@
-
-import { getSession } from '@/actions/get-session';
 import AuthForm from '@/components/forms/AuthForm'
 import { LoginFormProps } from '@/data/formProps'
 import { redirect } from 'next/navigation';
