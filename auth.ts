@@ -157,15 +157,47 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               image: user.image ?? "",
             },
           });
-
           }
+
+       // Check if the account already exists
+       if (!account) {
+        console.error("Account object is missing.");
+        return false; // Exit early if account is null or undefined
+      }
+      const existingAccount = await prisma.account.findUnique({
+        where: {
+          provider_providerAccountId: {
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+          },
+        },
+      });
+
+      if (!existingAccount) {
+        // If the account does not exist, create it
+        await prisma.account.create({
+          data: {
+            userId: existingUser.id,
+            type: account.type,
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+            access_token: account.access_token,
+            refresh_token: account.refresh_token,
+            expires_at: account.expires_at,
+            token_type: account.token_type,
+            id_token: account.id_token,
+            scope: account.scope,
+            session_state: account.session_state?.toString() ?? null, // Convert to string or set to null
+          },
+        });
+      }
+
+          return true;
         } catch (error) {
           console.error("Error while creating user:", error);
           return false;
         }
- 
-      return true;
-    },
+   },
   },
   secret: process.env.AUTH_SECRET,
 })
