@@ -76,7 +76,7 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
     }
     if (signInResponse?.ok){
       toast.success( (formName === 'loginForm')
-       ?  `${capitalize(userName)}, you are logged in! `         
+       ?  `Welcome back, ${capitalize(userName)}! `         
        :  `${capitalize(userName)}, your registration was successful! `       
       );
     } 

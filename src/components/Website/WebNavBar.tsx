@@ -21,7 +21,7 @@ const WebNavBar:React.FC<WebNavBarProps> = ({session}) => {
       {userRole === 'admin' && (
         <Link href={'/admin'}>admin page</Link>
       )}
-      <LogoutButton />
+      <LogoutButton username={user.name}/>
     </nav>
   )
 }

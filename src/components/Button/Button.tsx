@@ -1,6 +1,7 @@
 'use client'
 import '../styles/ButtonStyles.css'
 import { logoutUser } from '@/actions/logout-user';
+import capitalize from '@/lib/capitalize';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -37,12 +38,17 @@ import toast from 'react-hot-toast';
     )
 };
 
-export const LogoutButton = () => {
+type LogoutButtonProps = {
+  username: string; // Accept undefined as well
+};
+
+
+export const LogoutButton: React.FC<LogoutButtonProps> = ({ username }) => {
   const handleLogout = async () => {
     const result =  await logoutUser();
     if (result?.success) {
       toast.success(
-        result?.message
+        `${result?.message} ${capitalize(username)}`
       );
   };
 }

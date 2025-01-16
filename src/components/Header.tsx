@@ -8,12 +8,12 @@ import { auth } from '../../auth'
 
 const Header = async() => {
   const session = await auth();
-  const user = session?.user
+  const username = session?.user?.name || "Dude"
 
   return (
     <div className='Header flex items-center justify-end px-4'>
       {session ? (
-      <LogoutButton />
+      <LogoutButton username={username}/>
       ) : (
         <button className='btn login-btn'>
           <Link href='/login'>Login</Link>

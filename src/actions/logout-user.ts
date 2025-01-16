@@ -6,7 +6,7 @@ export const logoutUser = async () => {
     await signOut({ callbackUrl: '/login' }); // Перенаправление после выхода
       return { 
         success: true, 
-        message: "Logout successfull.", 
+        message: "Logout successfull,", 
       }
   } catch (error) {
     console.error('Error during logout:', error);
