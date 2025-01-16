@@ -139,18 +139,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           // Check if the email is allowed
           if (allowedEmails.length > 0 && !allowedEmails.includes(email)) {
-            console.error("Unauthorized email:", user.email);
+            console.error("Unauthorized email:", email);
             return false;
           }
 
           // Check if the user already exists in the database
-          const existingUser = await prisma.user.findUnique({
+          let existingUser = await prisma.user.findUnique({
             where: { email },
           });
 
           if (!existingUser) {
-            console.error("user not found");
-            return false;
+             // If user does not exist, create a new user
+              existingUser = await prisma.user.create({
+              data: {
+              email: user.email!,
+              name: user.name ?? "Anonymous",
+              image: user.image ?? "",
+            },
+          });
 
           }
         } catch (error) {
