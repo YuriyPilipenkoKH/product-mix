@@ -19,7 +19,7 @@ const WebNavBar:React.FC<WebNavBarProps> = ({session}) => {
       <Logo src={imageProps.websiteLogo}  />
       <Link href={'/dashboard'}>dashboard</Link>
       {userRole === 'admin' && (
-        <Link href={'/adminpanel'}>admin page</Link>
+        <Link href={'/admin'}>admin page</Link>
       )}
       <LogoutButton />
     </nav>
