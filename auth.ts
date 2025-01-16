@@ -128,24 +128,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         try {
         // Connect to the database
           await prisma.$connect();
-          // const email = user?.email ?? undefined;
+          const email = user?.email ?? undefined;
 
           const allowedEmails = process.env.ALLOWED_EMAILS?.split(",") || [];
 
-          if (!user.email) {
+          if (!email) {
             console.error("Missing email in user data");
             return false;
           }
 
           // Check if the email is allowed
-          if (allowedEmails.length > 0 && !allowedEmails.includes(user.email)) {
+          if (allowedEmails.length > 0 && !allowedEmails.includes(email)) {
             console.error("Unauthorized email:", user.email);
             return false;
           }
 
           // Check if the user already exists in the database
           const existingUser = await prisma.user.findUnique({
-            where: { email: user.email },
+            where: { email },
           });
 
           if (!existingUser) {
