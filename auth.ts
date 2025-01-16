@@ -13,19 +13,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-      profile(profile) {
-        return {
-          id: profile.id,
-          name: profile.name,
-          email: profile.email,
-          image: profile.picture,
-          role: "user", // Default role for Google users
-        };
-      },
+      // profile(profile) {
+      //   return {
+      //     id: profile.id,
+      //     name: profile.name,
+      //     email: profile.email,
+      //     image: profile.picture,
+      //     role: profile.role
+      //   };
+      // },
     }),
     GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: process.env.AUTH_GITHUB_ID!,
+      clientSecret: process.env.AUTH_GITHUB_SECRET!,
   }),
     CredentialsProvider({
       name: "Credentials",
@@ -119,15 +119,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
     }
     ,
-    async signIn({
-      user,
-      account,
-    }: {
+    async signIn( 
+      {user, account}: {
       user: User; // Use the Prisma User type here
       account: Account | null;
     }){
-      if (account?.provider === "google") {
+
         try {
+        // Connect to the database
+          await prisma.$connect();
+          // const email = user?.email ?? undefined;
+
           const allowedEmails = process.env.ALLOWED_EMAILS?.split(",") || [];
 
           if (!user.email) {
@@ -155,7 +157,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           console.error("Error while creating user:", error);
           return false;
         }
-      }
+ 
       return true;
     },
   },

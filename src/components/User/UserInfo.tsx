@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext } from 'react'
 import capitalize from '@/lib/capitalize';
-// import { getSession } from '@/actions/get-session';
+
 import { SessionContext, SessionContextType } from '@/context/SessionContext';
 
 
@@ -10,7 +10,8 @@ import { SessionContext, SessionContextType } from '@/context/SessionContext';
 
 const UserInfo =() => {
   const {session} = useContext(SessionContext as React.Context<SessionContextType>);
-//     const session =  await getSession()
+
+// console.log(session)
 const user = session?.user
   return (
     <div>
