@@ -11,6 +11,7 @@ import { navLinks } from '@/data/links';
 import { LogoutButton } from '@/components/Button/LogoutButton';
 
 
+
 interface Props {
   children: React.ReactElement<{ session: Session }>; // Specify that children accepts session
 }
@@ -53,7 +54,7 @@ async function Layout({ children }: Props) {
           </nav>
         </div>
         <div className="border-t p-4">
-          <LogoutButton username={''} />
+          <LogoutButton username={session?.user?.name} />
         </div>
       </div>
     </div>
@@ -82,9 +83,9 @@ async function Layout({ children }: Props) {
               alt="Avatar"
               className="rounded-full"
               height="32"
-              src="/placeholder.svg"
+              src={session?.user?.image || '/placeholder.svg'}
               style={{
-                aspectRatio: '32/32',
+                aspectRatio: '24/32',
                 objectFit: 'cover',
               }}
               width="32"
