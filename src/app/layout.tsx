@@ -34,7 +34,7 @@ export default async function RootLayout({
   // const session = await getSession() || defaultSession
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
       // data-theme="dark"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

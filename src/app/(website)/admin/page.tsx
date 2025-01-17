@@ -22,7 +22,7 @@ const AdminPage = async () => {
   return (
     <div>
       <h2>Admin page</h2>
-      <Link href={'/dashboard'}>dashboard Page</Link>
+
       <div>name{' '}{capitalize(session?.user?.name)}</div>
       <div>role{' '}{userRole}</div>
       <div>photo{' '}{session?.user?.image}</div>
