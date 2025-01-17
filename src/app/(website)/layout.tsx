@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PackageIcon } from '@/components/icons';
 import { navLinks } from '@/data/links';
+import { LogoutButton } from '@/components/Button/LogoutButton';
 
 
 interface Props {
@@ -43,16 +44,16 @@ async function Layout({ children }: Props) {
               >
                 <span>{link.title}</span>
                 {link.badge > 0 && (
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                  <div className="badge badge-primary ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                     {link.badge}
-                  </Badge>
+                  </div>
                 )}
               </Link>
             ))}
           </nav>
         </div>
         <div className="border-t p-4">
-          <LogoutButton />
+          <LogoutButton username={''} />
         </div>
       </div>
     </div>
@@ -69,14 +70,14 @@ async function Layout({ children }: Props) {
         <div className="ml-auto flex items-center gap-4">
           <form>
             <div className="relative">
-              <Input
-                className="bg-gray-100/60 md:w-[200px]"
+              <input
+                className="input input-bordered bg-gray-100/60 md:w-[200px]"
                 placeholder="Search orders..."
                 type="search"
               />
             </div>
           </form>
-          <Button className="rounded-full" size="icon" variant="ghost">
+          <button className="btn btn-primary rounded-full">
             <Image
               alt="Avatar"
               className="rounded-full"
@@ -89,7 +90,7 @@ async function Layout({ children }: Props) {
               width="32"
             />
             <span className="sr-only">View profile</span>
-          </Button>
+          </button>
         </div>
       </header>
       <main className="flex-1 p-4 md:p-6">{children}</main>
