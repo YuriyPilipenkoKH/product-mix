@@ -4,9 +4,9 @@ import React from 'react';
 import { auth } from '../../../auth';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PackageIcon } from '@/components/icons';
 import { navLinks } from '@/data/links';
 import LogoutButton from '@/components/Button/logout-button';
+import { GiOrangeSlice } from "react-icons/gi";
 
 interface Props {
   children: React.ReactElement<{ session: Session }>; // Specify that children accepts session
@@ -22,8 +22,8 @@ async function Layout({ children }: Props) {
     <div className="hidden w-80 border-r lg:block">
       <div className="flex h-full flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4">
-          <Link className="flex items-center gap-2 font-semibold" href="#">
-            <PackageIcon className="h-6 w-6" />
+          <Link className="flex items-center gap-2 font-semibold" href="/">
+            <GiOrangeSlice className="h-6 w-6" />
             <span className="">Product Mix</span>
           </Link>
         </div>
@@ -60,7 +60,7 @@ async function Layout({ children }: Props) {
           className="flex items-center rounded-md bg-gray-100 px-2 py-2 lg:hidden"
           href="#"
         >
-          <PackageIcon className="h-6 w-6" />
+          <GiOrangeSlice className="h-6 w-6" />
           <span className="sr-only">Home</span>
         </Link>
         <h1 className="md:blobk hidden text-lg font-semibold">Dashboard</h1>
