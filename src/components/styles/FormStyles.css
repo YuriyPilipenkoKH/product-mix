@@ -8,6 +8,7 @@
 .AuthForm>.formLabel{
   /* color: #222; */
   font-weight: 600;
+  width: 100%;
 }
 .AuthForm>.highlight-error{
   border: 2px solid crimson;

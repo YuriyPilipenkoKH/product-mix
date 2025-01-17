@@ -8,6 +8,7 @@ import { FaRegistered } from "react-icons/fa";
 import { LuKeyRound } from "react-icons/lu";
 import FormHeader from './FormHeader';
 import { BtnX } from '../Button/Button';
+import SocialLogin from '../auth/SocialLogin';
 
 interface FormWrapperProps {
   children: React.ReactNode;
@@ -36,8 +37,7 @@ const FormWrapper = ({
           {children}
         </div>
        {showSocial && (
-        // <SocialLogin/>
-        <></>
+        <SocialLogin />
        )} 
        <div className='flex w-full justify-center items-center mt-8'>
           <BtnX
