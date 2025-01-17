@@ -6,7 +6,7 @@ import { signOut } from "next-auth/react";
 import { useFormStatus } from "react-dom";
 import toast from "react-hot-toast";
 
-interface LogoutButtonProps { 
+export interface LogoutButtonProps { 
   username: string;
 }                                                   
 

@@ -5,7 +5,7 @@ import { auth } from '../../../auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { navLinks } from '@/data/links';
-import LogoutButton from '@/components/Button/logout-button';
+import {LogoutButton} from '@/components/Button/logout-button';
 import { GiOrangeSlice } from "react-icons/gi";
 
 interface Props {
@@ -33,9 +33,9 @@ async function Layout({ children }: Props) {
               <Link
                 className={`${
                   activeLink === link.href
-                    ? 'bg-gray-100 text-gray-900 hover:text-gray-900'
+                    ? 'bg-gray-100 text-gray-900 hover:text-purple-600'
                     : ''
-                } flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900`}
+                } flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-yellow-400`}
                 href={link.href}
                 key={link.title}
               >
@@ -50,7 +50,7 @@ async function Layout({ children }: Props) {
           </nav>
         </div>
         <div className="border-t p-4">
-          <LogoutButton  />
+          <LogoutButton username={session?.user?.name} />
         </div>
       </div>
     </div>

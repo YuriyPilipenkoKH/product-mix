@@ -6,8 +6,8 @@ export const links = [
 
 export const navLinks = [
   { title: 'Home', href: '/dashboard', badge: 0 },
-  { title: 'Orders', href: '#', badge: 3 },
+  { title: 'Orders', href: 'orders', badge: 3 },
   { title: 'Products', href: '/products', badge: 12 },
   { title: 'Users', href: '#', badge: 4 },
-  { title: 'Analytics', href: '#', badge: 0 },
+  // { title: 'Analytics', href: '#', badge: 0 },
 ];
