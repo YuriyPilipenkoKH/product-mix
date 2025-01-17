@@ -1,16 +1,12 @@
-
 import { redirect } from 'next/navigation';
 import { Session } from 'next-auth';
 import React from 'react';
-import WebNavBar from '@/components/Website/WebNavBar';
 import { auth } from '../../../auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PackageIcon } from '@/components/icons';
 import { navLinks } from '@/data/links';
-import { LogoutButton } from '@/components/Button/LogoutButton';
-
-
+import LogoutButton from '@/components/Button/logout-button';
 
 interface Props {
   children: React.ReactElement<{ session: Session }>; // Specify that children accepts session
@@ -28,7 +24,7 @@ async function Layout({ children }: Props) {
         <div className="flex h-14 items-center border-b px-4">
           <Link className="flex items-center gap-2 font-semibold" href="#">
             <PackageIcon className="h-6 w-6" />
-            <span className="">Acme Inc</span>
+            <span className="">Product Mix</span>
           </Link>
         </div>
         <div className="flex-1 overflow-auto py-2">
@@ -54,7 +50,7 @@ async function Layout({ children }: Props) {
           </nav>
         </div>
         <div className="border-t p-4">
-          <LogoutButton username={session?.user?.name} />
+          <LogoutButton  />
         </div>
       </div>
     </div>

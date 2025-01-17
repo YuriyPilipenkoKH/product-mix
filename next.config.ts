@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   env: {
     NAMES_TO_AVOID: process.env.NAMES_TO_AVOID || "",
   },
+  images: {
+    domains: [
+      'lh3.googleusercontent.com', // For Google OAuth avatars
+      'githubusercontent.com',     // For GitHub avatars
+      'res.cloudinary.com',        // For Cloudinary images
+    ],
+  },
 
 };
 
