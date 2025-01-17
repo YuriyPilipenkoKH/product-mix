@@ -11,7 +11,7 @@
   width: 100%;
 }
 .AuthForm>.highlight-error{
-  border: 2px solid crimson;
+  border: 2px solid var(--purple);
   /* color: #222; */
 }
 .AuthForm>.highlight-success{
@@ -27,7 +27,7 @@
   line-height: 1.25rem/* 20px */;
   padding: 8px 8px;
   border-radius: 0.4rem;
-  border: 2px solid crimson;
+  border: 2px solid var(--purple);
   display: flex;
   align-items: center;
   justify-content: space-between;
