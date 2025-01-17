@@ -5,7 +5,6 @@ import { Toaster } from "react-hot-toast";
 import { options } from "@/lib/hotToast";
 import ThemeProvider from "@/context/ThemeProvider";
 import ClientThemeWrapper from "@/context/ClientThemeWrapper";
-import { getSession } from "@/actions/get-session";
 import SessionProvider, { defaultSession } from "@/context/SessionContext";
 import { auth } from "../../auth";
 
@@ -31,7 +30,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth() || defaultSession
-  // const session = await getSession() || defaultSession
 
   return (
     <html lang="en" suppressHydrationWarning>
