@@ -87,8 +87,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signOut: "/login", // The page where the user will be redirected after logging out
   },
   callbacks: {
-    async session({ session, token }: { session: Session; token: JWT }) {
-      try {
+    async session({ session, token }: { session: Session; token: JWT }):Promise<Session> {
         if (session.user) {
           if (token?.id) {
             session.user.id = token.id as string;
@@ -98,32 +97,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           }
         }
         return session;
-      } catch (error) {
-        console.error("Error in session callback:", error);
-        // Optionally, return the session as-is or null in case of an error
-        return session;
-      }
     }
     ,
-    async jwt({ token, user }: { token: JWT; user?: User }) {
-      try {
+    async jwt({ token, user }: { token: JWT; user?: User }):Promise<JWT> {
         if (user) {
           token.id = user.id as string;
           token.role = user.role as string;
         }
         return token;
-      } catch (error) {
-        console.error("Error in JWT callback:", error);
-        // Optionally, handle the error or modify the token to reflect an issue
-        return token; // Ensure the token is returned even in case of an error
-      }
-    }
+       }
     ,
     async signIn( 
       {user, account}: {
       user: User; // Use the Prisma User type here
       account: Account | null;
-    }){
+    }):Promise<boolean> {
 
         try {
         // Connect to the database
