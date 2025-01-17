@@ -27,7 +27,7 @@ const FormWrapper = ({
     showSocial
   } = formProps
   return (
-    <div className='shadow-sm rounded-md '>
+    <div className='shadow-sm rounded-md w-[400px]'>
       <FormHeader 
       titleLabel={titleLabel}
       welcomeMsg={welcomeMsg}
