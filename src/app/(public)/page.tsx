@@ -1,5 +1,4 @@
-import ThemeChanger from "@/components/Button/ThemeChanger";
-import Header from "@/components/Header";
+
 import Link from "next/link";
 
 export default function Home() {

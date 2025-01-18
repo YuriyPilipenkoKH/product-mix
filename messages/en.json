@@ -1,3 +1,6 @@
 {
-  
+  "HomePage": {
+    "title": "Welcome to Product Mix",
+    "description": "        Modern web application that leverages server actions to securely handle product management directly on the server side. This app allows users to store, organize, and manage different products in a database using intuitive CRUD operations"
+  }
 }
