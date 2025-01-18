@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
 
 const nextConfig: NextConfig = {
   // Expose environment variables to the client
@@ -25,7 +29,7 @@ const nextConfig: NextConfig = {
 
 
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
 
 // domains: [
 //   'lh3.googleusercontent.com', // For Google OAuth avatars
