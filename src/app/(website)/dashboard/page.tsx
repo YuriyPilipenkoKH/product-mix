@@ -14,11 +14,11 @@ export default function DashboardPage() {
             Your orders for today. Keep up the good work!
           </p>
         </div>
-        <div>
-          <div className="flex flex-col gap-4">
+        <div  className=" w-full col-span-4">
+          <div className="flex flex-col gap-4 w-full ">
             {orders.map((order) => (
-              <div className='card' key={order.id}>
-                <div className="flex flex-col justify-between gap-4 py-4 md:flex-row md:items-center">
+              <div className='card  w-full shadow-xl' key={order.id}>
+                <div className="flex flex-col justify-between gap-4 py-4 md:flex-row md:items-center w-full">
                   <div className="flex items-center gap-4">
                     <Image
                       alt="Image"
