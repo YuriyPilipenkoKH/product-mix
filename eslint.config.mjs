@@ -25,12 +25,58 @@ const eslintConfig = [
           argsIgnorePattern: "^_", // Ignore unused arguments starting with `_`
         },
       ],
-      // Add any other rules as needed
+      // Avoid "any" type usage but allow controlled exceptions
+      "@typescript-eslint/no-explicit-any": [
+        "warn", // Warn instead of erroring
+        {
+          fixToUnknown: true, // Suggest `unknown` instead of `any`
+          ignoreRestArgs: false, // Disallow `any` in rest arguments
+        },
+      ],
+      // Enforce consistent import order for better readability
+      "import/order": [
+        "warn",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+          ],
+          "newlines-between": "always",
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+        },
+      ],
+      // Enforce consistent indentation
+      "indent": ["warn", 2, { SwitchCase: 1 }],
+      // Disable PropTypes as we're using TypeScript for type checking
+      "react/prop-types": "off",
+      // Other useful rules
+      "no-console": "warn", // Warn for console logs
+      "react/react-in-jsx-scope": "off", // Not needed for Next.js
     },
   },
   {
-    // Parser and environment settings
-    files: ["**/*.ts", "**/*.tsx"], // Apply to TypeScript files
+    // Apply specific configurations for TypeScript files
+    files: ["**/*.ts", "**/*.tsx"], // Match TypeScript files
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 2023,
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+  },
+  {
+    // Additional settings for JavaScript files
+    files: ["**/*.js", "**/*.jsx"],
     languageOptions: {
       parserOptions: {
         ecmaVersion: 2023,
