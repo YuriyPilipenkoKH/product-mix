@@ -23,7 +23,7 @@ interface AuthFormProps {
   locale: string
 }
 
-const AuthForm:React.FC<AuthFormProps> = ({formProps, locale}) => {
+const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
   const t = useTranslations('AuthForm');
   const {
     formName,
