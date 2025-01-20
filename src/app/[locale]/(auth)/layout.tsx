@@ -7,7 +7,7 @@ interface Props {
     params: Promise<{ locale: string }>;
   }
 
-async function Layout({
+async function AuthLayout({
   children,
   params,
 }: {
@@ -26,4 +26,4 @@ async function Layout({
   )
 }
 
-export default Layout
+export default AuthLayout
