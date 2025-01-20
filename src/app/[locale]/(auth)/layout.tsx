@@ -19,7 +19,6 @@ async function AuthLayout({
     <div className='min-h-screen flex flex-col gap-4 items-center  text-slate-300 bg-[var(--auth-bg)]'>
                 <Navigation locale={locale}/>
       <div className='absolute top-[1rem] left-[1rem]'>
-        {/* <Logo src={imageProps.authLogo}/> */}
       </div>
         {children}
     </div>
