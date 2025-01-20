@@ -46,5 +46,9 @@ export default async function LocaleLayout({
   // Enable static rendering
   setRequestLocale(locale);
 
-  return <BaseLayout locale={locale}>{children}</BaseLayout>;
+  return(
+    <BaseLayout locale={locale}>
+    {children}
+    </BaseLayout>
+  ) 
 }
