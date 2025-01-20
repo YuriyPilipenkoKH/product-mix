@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { PiHeadlightsBold } from "react-icons/pi";
 import { LuLightbulb } from "react-icons/lu";
 import { BsMoonStars } from "react-icons/bs";
 

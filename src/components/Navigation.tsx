@@ -3,6 +3,7 @@ import NavigationLink from './NavigationLink';
 import LocaleSwitcher from './LocaleSwitcher';
 import { getTranslations } from 'next-intl/server';
 import { auth } from '@/auth';
+import ThemeChanger from './ThemeChanger';
 
 type Props = {
   locale: string;
@@ -23,7 +24,10 @@ export default async function Navigation({locale}: Props) {
           <NavigationLink href="/">{t('home')}</NavigationLink>
           {!session && <NavigationLink href="/login">{t('pathnames')}</NavigationLink>}
         </div>
-        <LocaleSwitcher  />
+        <div className="flex gap-2 ml-auto">
+          <ThemeChanger/>
+          <LocaleSwitcher  />
+        </div>
       </nav>
  
     </div>

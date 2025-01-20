@@ -17,7 +17,8 @@ async function AuthLayout({
   const { locale } =await params;
   return (
     <div className='min-h-screen flex flex-col gap-4 items-center  text-slate-300 bg-[var(--auth-bg)]'>
-                <Navigation locale={locale}/>
+
+        <Navigation locale={locale}/>
       <div className='absolute top-[1rem] left-[1rem]'>
       </div>
         {children}
