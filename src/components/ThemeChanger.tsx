@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { PiHeadlightsBold } from "react-icons/pi";
+import { LuLightbulb } from "react-icons/lu";
 import { BsMoonStars } from "react-icons/bs";
 
 export default function ThemeChanger() {
@@ -10,7 +11,15 @@ export default function ThemeChanger() {
 
   useEffect(() => {
     setMounted(true)
-    // Apply the theme to the HTML element
+    const storedTheme = localStorage.getItem('theme-mix') as 'light' | 'dark';
+    if (storedTheme) {
+      setTheme(storedTheme);
+      document.documentElement.setAttribute('data-theme', storedTheme);
+    }
+  }, []);
+  useEffect(() => {
+    // Save theme to localStorage and apply it
+    localStorage.setItem('theme-mix', theme);
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
@@ -25,11 +34,11 @@ export default function ThemeChanger() {
 
   return (
     <button
-      className="btn btn-primary"
+      className="btn btn-ghost"
       onClick={toggleTheme}
       aria-label="Toggle Theme"
     >
-      {theme === 'light' ? <PiHeadlightsBold/> :  <BsMoonStars/>}
+      {theme === 'light' ? <LuLightbulb /> :  <BsMoonStars/>}
     </button>
   );
 }

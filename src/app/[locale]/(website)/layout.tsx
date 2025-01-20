@@ -8,6 +8,7 @@ import { navLinks } from '@/data/links';
 import {LogoutButton} from '@/components/Button/logout-button';
 import { GiOrangeSlice } from "react-icons/gi";
 import LocaleSwitcher from '@/components/LocaleSwitcher';
+import ThemeChanger from '@/components/ThemeChanger';
 
 interface Props {
   children: React.ReactElement<{ session: Session }>; // Specify that children accepts session
@@ -66,6 +67,7 @@ interface Props {
         </Link>
         <h1 className="md:blobk hidden text-lg font-semibold">Dashboard</h1>
         <div className="ml-auto flex items-center gap-4">
+          <ThemeChanger/>
           <LocaleSwitcher  />
           <form>
             <div className="relative">
