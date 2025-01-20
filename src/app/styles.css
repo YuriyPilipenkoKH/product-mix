@@ -33,7 +33,7 @@
 }
 
 
-:root.light {
+:root[data-theme='light'] {
   --background-color: #9a9b96;
   --background-link: transparent;
   --background-modal:  #9a9b96;
@@ -44,7 +44,7 @@
   --link-span:  #ffc107;
 }
 
-:root.dark {
+:root[data-theme='dark'] {
   --background-color: #041020;
   --background-link: #ff75;
   --background-modal:  #042043;
