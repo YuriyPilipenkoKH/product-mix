@@ -24,7 +24,7 @@ export default async function BaseLayout({children, locale}: Props) {
     <html className="h-full" lang={locale} suppressHydrationWarning>
       <body className={clsx(inter.className, 'flex h-full flex-col')}>
         <NextIntlClientProvider messages={messages}>
-          <Navigation locale={locale}/>
+
           {children}
           <Toaster 
           position="top-center" 
