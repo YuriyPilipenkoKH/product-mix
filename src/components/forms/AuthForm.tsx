@@ -160,8 +160,8 @@ return(
      className={cn('grow' )}
     {...register('name', { onChange: handleInputChange })}
       placeholder=	{( isSubmitting ) 
-      ? "Processing" 
-      : 'name'}
+        ? "Processing" 
+        : t('register.inputs.name')}
     />
     </label>
   </>
@@ -174,8 +174,8 @@ return(
   className={cn('grow' )} 
   {...register('email', { onChange: handleInputChange })}
     placeholder=	{( isSubmitting ) 
-    ? "Processing" 
-    : 'email'}
+      ? "Processing" 
+      : t('register.inputs.email')}
   />
   </label>
   <label 
@@ -189,7 +189,9 @@ return(
          register('password').onChange(e);
          handleInputChange('password');
        }}
-      placeholder={isSubmitting ? "Processing" : 'Password'}
+      placeholder={isSubmitting 
+        ? "Processing" 
+        : t('register.inputs.password')}
       />
   </label>
   <button
@@ -198,7 +200,7 @@ return(
     disabled={isSubmitting || !isDirty || !isValid || !!logError}
         >
     { isLoading  ? "Sending.." : (formName === 'registerForm' )
-      ? 'Register'  : 'Login'}
+      ? t('register.submitButtonLabel')  : t('login.submitButtonLabel')}
   </button>
     {(isRegisterErrors(errors)  || errors.email || errors.password || logError) && (
       <div className="autherror w-full">

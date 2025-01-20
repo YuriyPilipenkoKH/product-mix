@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { GrGithub } from "react-icons/gr";
 import { googleSignIn } from '@/actions/google-signin'
 import { githubSignIn } from '@/actions/github-signin'
+import { useTranslations } from 'next-intl';
 
 
 interface SignInButtonProps {
@@ -13,6 +14,7 @@ interface SignInButtonProps {
 const SignInButton = ({provider}:SignInButtonProps) => {
   const logAction = (provider === 'google') ? googleSignIn : githubSignIn
   const [message, formAction, isPending] = useActionState(logAction, undefined)
+  const t = useTranslations('SocialLogin');
     return (
     <form
       className='w-full'
@@ -20,7 +22,7 @@ const SignInButton = ({provider}:SignInButtonProps) => {
       >
       <button className='flex w-full justify-center border rounded-lg p-2 space-x-2 items-center'>
           <p>
-            {`LogIn With ${(provider === 'google') ? 'Google' : 'Github'}`}
+            {`${t('title')} ${(provider === 'google') ? 'Google' : 'Github'}`}
             </p> 
             {(provider === 'google') 
             ? <FcGoogle className='h-5 w-5' />
