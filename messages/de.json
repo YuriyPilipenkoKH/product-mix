@@ -65,6 +65,24 @@
     "SocialLogin": {
       "title": "Einloggen mit"
     },
+    "ZodErrors": {
+      "name": {
+        "min": "Mindestens 3 Zeichen für den Namen",
+        "max": "Maximal 32 Zeichen für den Namen",
+        "regex": "Nur Buchstaben und Zahlen sind erlaubt",
+        "forbiddenPrefix": "Gib einen anderen Namen ein",
+        "forbiddenName": "Name ist nicht erlaubt"
+      },
+      "email": {
+        "invalid": "E-Mail ist nicht gültig",
+        "forbiddenPrefix": "Gib eine andere E-Mail-Adresse ein",
+        "unsupportedDomain": "Domain wird nicht unterstützt"
+      },
+      "password": {
+        "min": "Mindestens 6 Zeichen für das Passwort",
+        "requirements": "Großbuchstaben und Zahlen enthalten"
+      }
+    },
     "PathnamesPage": {
       "description": "<p>Auch die Pfadnamen sind internationalisiert.</p><p>Wenn du die Standardsprache Englisch verwendest, siehst du <code>/en/pathnames</code> in der Adressleiste des Browsers auf dieser Seite.</p><p>Wenn du die Sprache auf Deutsch änderst, wird die URL entsprechend lokalisiert (<code>/de/pfadnamen</code>).</p>",
       "title": "Pfadnamen"
