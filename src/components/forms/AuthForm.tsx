@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react"
 import '../styles/FormStyles.css'
-import { LogInput, LoginSchema, RegInput, RegisterSchema } from '@/models/auth'
+import { LogInput,  RegInput, getLoginSchema, getRegisterSchema} from '@/models/auth'
 import { AuthFormBaseTypes } from "@/types/formTypes"
 import { useRouter } from "next/navigation"
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -24,7 +24,10 @@ interface AuthFormProps {
 }
 
 const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
-  const t = useTranslations('AuthForm');
+  const d = useTranslations('AuthForm');
+  const t = useTranslations('ZodErrors');
+  const LoginSchema = getLoginSchema(t);
+  const RegisterSchema = getRegisterSchema(t);
   const {
     formName,
   } = formProps
@@ -161,7 +164,7 @@ return(
     {...register('name', { onChange: handleInputChange })}
       placeholder=	{( isSubmitting ) 
         ? "Processing" 
-        : t('register.inputs.name')}
+        : d('register.inputs.name')}
     />
     </label>
   </>
@@ -175,7 +178,7 @@ return(
   {...register('email', { onChange: handleInputChange })}
     placeholder=	{( isSubmitting ) 
       ? "Processing" 
-      : t('register.inputs.email')}
+      : d('register.inputs.email')}
   />
   </label>
   <label 
@@ -191,7 +194,7 @@ return(
        }}
       placeholder={isSubmitting 
         ? "Processing" 
-        : t('register.inputs.password')}
+        : d('register.inputs.password')}
       />
   </label>
   <button
@@ -200,7 +203,7 @@ return(
     disabled={isSubmitting || !isDirty || !isValid || !!logError}
         >
     { isLoading  ? "Sending.." : (formName === 'registerForm' )
-      ? t('register.submitButtonLabel')  : t('login.submitButtonLabel')}
+      ? d('register.submitButtonLabel')  : d('login.submitButtonLabel')}
   </button>
     {(isRegisterErrors(errors)  || errors.email || errors.password || logError) && (
       <div className="autherror w-full">
