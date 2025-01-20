@@ -16,9 +16,9 @@ export default async function Navigation({locale}: Props) {
   const t = await getTranslations({ locale, namespace: 'Navigation' });
 
   return (
-    <div className='bg-transparent w-full' >
+    <div className='bg-transparent  w-full' >
       {!session ? (
-      <nav className="container flex justify-between p-2 text-white bg-transparent">
+      <nav className="container flex justify-between p-2 text-slate-300 bg-transparent">
         <div>
           <NavigationLink href="/">{t('home')}</NavigationLink>
           <NavigationLink href="/login">{t('pathnames')}</NavigationLink>
