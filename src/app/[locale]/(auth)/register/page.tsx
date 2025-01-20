@@ -11,10 +11,13 @@ interface Props {
 const RegisterPage = async({ params }: Props) => {
   const t = await getTranslations('AuthForm');
   const RegisterFormProps = await getRegisterFormProps(t);
+  const { locale } =await params; 
+
   return (
     <div>
       <AuthForm 
-      formProps={ RegisterFormProps }/>
+      formProps={ RegisterFormProps }
+      locale={locale}/>
     </div>
   )
 }

@@ -16,12 +16,15 @@ import { FlatBtn } from '../Button/Button'
 import { retrieveToken } from '@/lib/retrieveToken'
 import { signIn } from "next-auth/react";
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 interface AuthFormProps {
   formProps: AuthFormBaseTypes
+  locale: string
 }
 
-const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
+const AuthForm:React.FC<AuthFormProps> = ({formProps, locale}) => {
+  const t = useTranslations('AuthForm');
   const {
     formName,
   } = formProps

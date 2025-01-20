@@ -43,14 +43,25 @@
     "login": {
       "titleLabel": "Log In",
       "welcomeMsg": "Welcome Back!",
-      "backButtonLabel": "Need an account?"
+      "backButtonLabel": "Need an account?",
+      "submitButtonLabel": "Log In",
+      "inputs": {
+        "email": "email",
+        "password": "password"
+      }
     },
     "register": {
       "titleLabel": "Sign Up",
       "welcomeMsg": "Hi there!",
-      "backButtonLabel": "Already have an account?"
+      "backButtonLabel": "Already have an account?",
+      "submitButtonLabel": "Register",
+      "inputs": {
+        "name": "name",
+        "email": "email",
+        "password": "password"
+      }
     }
-  },
+   },
   "PathnamesPage": {
     "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
     "title": "Pathnames"

@@ -22,7 +22,8 @@ const LoginPage = async({ params }: Props) => {
   return (
     <div className='flex flex-col gap-5 items-center justify-center   p-6'  >
         <AuthForm 
-          formProps={ LoginFormProps }/>
+          formProps={ LoginFormProps }
+          locale={locale}/>
     </div>
   )
 }

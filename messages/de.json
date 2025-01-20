@@ -43,12 +43,23 @@
       "login": {
         "titleLabel": "Einloggen",
         "welcomeMsg": "Willkommen zurück!",
-        "backButtonLabel": "Benötigst du ein Konto?"
+        "backButtonLabel": "Benötigst du ein Konto?",
+        "submitButtonLabel": "Einloggen",
+        "inputs": {
+          "email": "post",
+          "password": "passwort"
+        }
       },
       "register": {
         "titleLabel": "Registrieren",
         "welcomeMsg": "Hallo!",
-        "backButtonLabel": "Hast du bereits ein Konto?"
+        "backButtonLabel": "Hast du bereits ein Konto?",
+        "submitButtonLabel": "Registrieren",
+        "inputs": {
+          "name": "name",
+          "email": "post",
+          "password": "passwort"
+        }
       }
     },
     "PathnamesPage": {

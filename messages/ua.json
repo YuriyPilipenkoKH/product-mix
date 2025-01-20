@@ -42,13 +42,24 @@
   "AuthForm": {
     "login": {
       "titleLabel": "Увійти",
-      "welcomeMsg": "Ласкаво просимо назад!",
-      "backButtonLabel": "Потрібен обліковий запис?"
+      "welcomeMsg": "Ласкаво просимо!",
+      "backButtonLabel": "Потрібен обліковий запис?",
+      "submitButtonLabel": "Увійти",
+      "inputs": {
+        "email": "пошта",
+        "password": "пароль"
+      }
     },
     "register": {
       "titleLabel": "Зареєструватися",
       "welcomeMsg": "Привіт!",
-      "backButtonLabel": "Вже є обліковий запис?"
+      "backButtonLabel": "Вже є обліковий запис?",
+      "submitButtonLabel": "Зареєструватися",
+      "inputs": {
+        "name": "ім'я",
+        "email": "пошта",
+        "password": "пароль"
+      }
     }
   },
   "PathnamesPage": {
