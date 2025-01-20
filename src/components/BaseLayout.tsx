@@ -4,6 +4,8 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import {ReactNode} from 'react';
 import Navigation from './Navigation';
+import { Toaster } from 'react-hot-toast';
+import { options } from '@/lib/hotToast';
 
 
 const inter = Inter({subsets: ['latin']});
@@ -24,6 +26,10 @@ export default async function BaseLayout({children, locale}: Props) {
         <NextIntlClientProvider messages={messages}>
           <Navigation locale={locale}/>
           {children}
+          <Toaster 
+          position="top-center" 
+          toastOptions={options} 
+          gutter={24} />
         </NextIntlClientProvider>
       </body>
     </html>
