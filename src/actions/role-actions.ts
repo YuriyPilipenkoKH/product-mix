@@ -3,7 +3,7 @@
 // import { auth } from "@/app/api/auth/[...nextauth]/route"
 import prisma from "../../prisma/prisma"
 import { z } from "zod"
-import { auth } from "../../auth"
+import { auth } from "../auth"
 
 const actionSchema = z.object({
   action: z.string(),

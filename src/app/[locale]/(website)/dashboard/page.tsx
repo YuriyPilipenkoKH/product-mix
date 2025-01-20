@@ -3,7 +3,7 @@
 import { orders } from '@/data/orders';
 import Image from 'next/image';
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
 
   return (
     <div className="grid gap-4 md:gap-8">

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import capitalize from '@/lib/capitalize';
-import { auth } from '../../../auth';
+import { auth } from '../../auth';
 
 
 const UserInfo = async() => {

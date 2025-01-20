@@ -7,12 +7,13 @@ import Link from 'next/link';
 import { navLinks } from '@/data/links';
 import {LogoutButton} from '@/components/Button/logout-button';
 import { GiOrangeSlice } from "react-icons/gi";
+import LocaleSwitcher from '@/components/LocaleSwitcher';
 
 interface Props {
   children: React.ReactElement<{ session: Session }>; // Specify that children accepts session
 }
 
-async function Layout({ children }: Props) {
+ async function Layout({ children }: Props) {
   const session = await auth();
 
    if (!session) redirect('/login'); 
@@ -50,7 +51,7 @@ async function Layout({ children }: Props) {
           </nav>
         </div>
         <div className="border-t p-4">
-          <LogoutButton username={session?.user?.name} />
+          <LogoutButton username={session?.user?.name || 'Dude'} />
         </div>
       </div>
     </div>
@@ -65,6 +66,7 @@ async function Layout({ children }: Props) {
         </Link>
         <h1 className="md:blobk hidden text-lg font-semibold">Dashboard</h1>
         <div className="ml-auto flex items-center gap-4">
+          <LocaleSwitcher  />
           <form>
             <div className="relative">
               <input
@@ -95,5 +97,4 @@ async function Layout({ children }: Props) {
   </div>
   );
 }
-
 export default Layout;

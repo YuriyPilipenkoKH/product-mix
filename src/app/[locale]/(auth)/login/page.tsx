@@ -1,8 +1,9 @@
+import { auth } from '@/auth';
 import AuthForm from '@/components/forms/AuthForm'
 import { LoginFormProps } from '@/data/formProps'
 import { redirect } from 'next/navigation';
 import React from 'react'
-import { auth } from '../../../../auth';
+
 
 
 const LoginPage = async () => {

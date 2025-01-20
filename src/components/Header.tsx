@@ -2,7 +2,7 @@
 import React from 'react'
 import { LogoutButton } from './Button/Button'
 import Link from 'next/link'
-import { auth } from '../../auth'
+import { auth } from '../auth'
 
 
 

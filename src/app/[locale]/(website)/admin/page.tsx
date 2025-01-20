@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
-import { auth } from "../../../../auth";
+
 import capitalize from "@/lib/capitalize";
 import { watchRole } from "@/actions/watch-role";
+import { auth } from "@/auth";
+
 
 
 const AdminPage = async () => {
