@@ -6,19 +6,21 @@ import capitalize from "@/lib/capitalize";
 import toast from "react-hot-toast";
 import { wait } from "@/lib/wait";
 import { signOut } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 
 export const LogoutButton:React.FC<LogoutButtonProps> = ({username} :LogoutButtonProps) => {
   const {pending,} = useFormStatus()
+  const t = useTranslations('Logout');
 
   const handleLogout = async () => {
     try {
       await signOut({ callbackUrl: "/login" }); // Redirects to the login page after signing out.
-      toast.success(`Logout successful, ${capitalize(username)}!`);
+      toast.success(`${t('success')} ${capitalize(username)}!`);
       await wait(2000);
     } catch (error) {
       console.error("Error during logout:", error);
-      toast.error("Failed to log out. Please try again.");
+      toast.error(t("fail"));
     }
   }
   return (
