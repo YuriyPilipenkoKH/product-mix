@@ -44,22 +44,18 @@
       "titleLabel": "Увійти",
       "welcomeMsg": "Ласкаво просимо!",
       "backButtonLabel": "Потрібен обліковий запис?",
-      "submitButtonLabel": "Увійти",
-      "inputs": {
-        "email": "пошта",
-        "password": "пароль"
-      }
+      "submitButtonLabel": "Увійти"
     },
     "register": {
       "titleLabel": "Зареєструватися",
       "welcomeMsg": "Привіт!",
       "backButtonLabel": "Вже є обліковий запис?",
-      "submitButtonLabel": "Зареєструватися",
-      "inputs": {
-        "name": "ім'я",
-        "email": "пошта",
-        "password": "пароль"
-      }
+      "submitButtonLabel": "Зареєструватися"
+    },
+    "inputs": {
+      "name": "ім'я",
+      "email": "пошта",
+      "password": "пароль"
     }
   },
   "SocialLogin": {

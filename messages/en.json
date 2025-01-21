@@ -44,22 +44,18 @@
       "titleLabel": "Log In",
       "welcomeMsg": "Welcome Back!",
       "backButtonLabel": "Need an account?",
-      "submitButtonLabel": "Log In",
-      "inputs": {
-        "email": "email",
-        "password": "password"
-      }
+      "submitButtonLabel": "LogIn"
     },
     "register": {
       "titleLabel": "Sign Up",
       "welcomeMsg": "Hi there!",
       "backButtonLabel": "Already have an account?",
-      "submitButtonLabel": "Register",
-      "inputs": {
-        "name": "name",
-        "email": "email",
-        "password": "password"
-      }
+      "submitButtonLabel": "Register"
+    },
+    "inputs": {
+      "name": "name",
+      "email": "email",
+      "password": "password"
     }
    },
    "SocialLogin": {

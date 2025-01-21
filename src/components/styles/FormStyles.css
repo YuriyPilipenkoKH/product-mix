@@ -10,6 +10,10 @@
   font-weight: 600;
   width: 100%;
 }
+.AuthForm>.formLabel>input{
+  color: var(--text-color);
+
+}
 .AuthForm>.highlight-error{
   border: 2px solid var(--purple);
   /* color: #222; */
