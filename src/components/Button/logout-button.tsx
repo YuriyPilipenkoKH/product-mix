@@ -33,7 +33,7 @@ export const LogoutButton:React.FC<LogoutButtonProps> = ({username} :LogoutButto
         // }}
       >
         <LogOutIcon className="h-4 w-4" />
-        {pending ? 'process' : 'LogOut'}
+        {pending ? 'process' : t('exit')}
         {' '}
         {username}
       </button>

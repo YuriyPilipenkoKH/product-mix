@@ -51,7 +51,7 @@ interface Props {
             ))}
           </nav>
         </div>
-        <div className="border-t p-4">
+        <div className="border-t py-4 px-1">
           <LogoutButton username={session?.user?.name || 'Dude'} />
         </div>
       </div>
