@@ -45,13 +45,15 @@
         "titleLabel": "Einloggen",
         "welcomeMsg": "Willkommen zurück!",
         "backButtonLabel": "Benötigst du ein Konto?",
-        "submitButtonLabel": "Einloggen"
+        "submitButtonLabel": "Einloggen",
+        "success": "Willkommen zurück,"
       },
       "register": {
         "titleLabel": "Registrieren",
         "welcomeMsg": "Hallo!",
         "backButtonLabel": "Hast du bereits ein Konto?",
-        "submitButtonLabel": "Registrieren"
+        "submitButtonLabel": "Registrieren",
+        "success": " deine Registrierung war erfolgreich!"
       },
       "inputs": {
         "name": "name",
@@ -78,7 +80,8 @@
       "password": {
         "min": "Mindestens 6 Zeichen für das Passwort",
         "requirements": "Großbuchstaben und Zahlen enthalten"
-      }
+      },
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
     },
     "Register-user": {
       "requiredFields": "Alle Felder sind erforderlich.",

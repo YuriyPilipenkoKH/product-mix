@@ -45,13 +45,15 @@
       "titleLabel": "Увійти",
       "welcomeMsg": "Ласкаво просимо!",
       "backButtonLabel": "Потрібен обліковий запис?",
-      "submitButtonLabel": "Увійти"
+      "submitButtonLabel": "Увійти",
+      "success": "Ласкаво просимо назад,"
     },
     "register": {
       "titleLabel": "Зареєструватися",
       "welcomeMsg": "Привіт!",
       "backButtonLabel": "Вже є обліковий запис?",
-      "submitButtonLabel": "Зареєструватися"
+      "submitButtonLabel": "Зареєструватися",
+      "success": " ваша реєстрація пройшла успішно!"
     },
     "inputs": {
       "name": "ім'я",
@@ -78,7 +80,8 @@
     "password": {
       "min": "Мінімум 6 символів для пароля",
       "requirements": "Включають великі літери та цифри"
-    }
+    },
+    "unexpectedError": "Сталася непередбачувана помилка."
   },
   "Register-user": {
     "requiredFields": "Всі поля обов'язкові для заповнення.",

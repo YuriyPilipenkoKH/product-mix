@@ -45,13 +45,15 @@
       "titleLabel": "Log In",
       "welcomeMsg": "Welcome Back!",
       "backButtonLabel": "Need an account?",
-      "submitButtonLabel": "LogIn"
+      "submitButtonLabel": "LogIn",
+      "success": "Welcome back,"
     },
     "register": {
       "titleLabel": "Sign Up",
       "welcomeMsg": "Hi there!",
       "backButtonLabel": "Already have an account?",
-      "submitButtonLabel": "Register"
+      "submitButtonLabel": "Register",
+      "success": " your registration was successful!"
     },
     "inputs": {
       "name": "name",
@@ -78,7 +80,8 @@
     "password": {
       "min": "Minimum 6 characters for password",
       "requirements": "Include capital letters and numbers"
-    }
+    },
+    "unexpectedError": "An unexpected error occurred."
   },
   "Register-user": {
     "requiredFields": "All fields are required.",
