@@ -40,6 +40,7 @@ export default function LocaleSwitcher() {
         {open &&  routing.locales.map((cur) => (
           <button
           key={cur}
+          id={cur}
           className='bg-transparent text-[var(--text-color)] hover:text-[var(--purple)] cursor-pointer'
           onClick={click}>
             {t('locale', {locale: cur})}
