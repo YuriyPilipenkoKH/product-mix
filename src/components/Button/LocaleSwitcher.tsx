@@ -31,17 +31,21 @@ export default function LocaleSwitcher() {
   return (
     <div   
       className={clsx(
-        'Mselect relative  inline-flex items-center bg-transparent  py-3 pl-2 pr-8  gap-1 ',
+        'Mselect relative  inline-flex items-center bg-[var(--background-color)]  py-3 pl-2 pr-8  gap-1 ',
         isPending && 'transition-opacity [&:disabled]:opacity-30'
       )}
       >
         <span className='text-[var(--text-color)]'>{locale}</span>
-      <div className='flex flex-col gap-2 absolute right-8 top-10 bg-transparent z-index-5'>
+      <div 
+      className={clsx('flex flex-col gap-2 absolute left-0  top-10 bg-[var(--background-color)]  z-index-5 ',
+        open ? 'p-2' : 'p-0'
+      )}
+      >
         {open &&  routing.locales.map((cur) => (
           <button
           key={cur}
           id={cur}
-          className='bg-transparent text-[var(--text-color)] hover:text-[var(--purple)] cursor-pointer'
+          className='bg-transparent text-[var(--text-color)] hover:text-[var(--purple)] cursor-pointer w-12 flex items-start'
           onClick={click}>
             {t('locale', {locale: cur})}
           </button>

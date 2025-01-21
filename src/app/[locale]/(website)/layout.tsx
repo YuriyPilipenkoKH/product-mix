@@ -30,12 +30,12 @@ interface Props {
           </Link>
         </div>
         <div className="flex-1 overflow-auto py-2">
-          <nav className="grid items-start px-4 text-sm font-medium">
+          <nav className="grid items-start gap-2 px-4 text-sm font-medium">
             {navLinks.map((link) => (
               <Link
                 className={`${
                   activeLink === link.href
-                    ? 'bg-gray-100 text-gray-900 hover:text-purple-600'
+                    ? 'bg-gray-400 text-gray-900 hover:text-purple-600'
                     : ''
                 } flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-yellow-400`}
                 href={link.href}
