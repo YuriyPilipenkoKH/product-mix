@@ -89,6 +89,12 @@
     "emailNotAllowed": "Email is not allowed.",
     "unexpectedError": "An unexpected error occurred."
   },
+  "Login-user": {
+    "userNotFound": "User not found.",
+    "invalidLogin": "Invalid login credentials",
+    "missingPassword": "Couldn't find password ",
+    "unexpectedError": "An unexpected error occurred."
+  },
   "PathnamesPage": {
     "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
     "title": "Pathnames"
