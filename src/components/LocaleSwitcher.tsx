@@ -4,6 +4,7 @@ import {Locale, routing, usePathname, useRouter} from '@/i18n/routing';
 import { MouseEvent, useState, useTransition } from 'react';
 import { useParams} from 'next/navigation';
 import { IoIosArrowDown } from 'react-icons/io';
+import clsx from 'clsx';
 
 
 export default function LocaleSwitcher() {
@@ -14,7 +15,7 @@ export default function LocaleSwitcher() {
   const pathname = usePathname();
   const params = useParams();
   const locale = useLocale();
-  console.log('params', params, 'pathname', pathname, 'locale', locale);
+
 
   const click =(e: MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
@@ -26,11 +27,14 @@ export default function LocaleSwitcher() {
     });
   }
 
-  
 
   return (
     <div   
-      className="Mselect relative  inline-flex items-center bg-transparent  py-3 pl-2 pr-8  gap-1"
+      className={clsx(
+        'Mselect relative  inline-flex items-center bg-transparent  py-3 pl-2 pr-8  gap-1 ',
+        isPending && 'transition-opacity [&:disabled]:opacity-30'
+      )}
+      // className="Mselect relative  inline-flex items-center bg-transparent  py-3 pl-2 pr-8  gap-1"
       >
         <span>{locale}</span>
       <div className='flex flex-col gap-2 absolute right-8 top-10 bg-transparent z-index-5'>
