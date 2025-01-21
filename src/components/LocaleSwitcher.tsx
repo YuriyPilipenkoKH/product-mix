@@ -36,7 +36,7 @@ export default function LocaleSwitcher() {
       )}
       // className="Mselect relative  inline-flex items-center bg-transparent  py-3 pl-2 pr-8  gap-1"
       >
-        <span>{locale}</span>
+        <span className='text-[var(--text-color)]'>{locale}</span>
       <div className='flex flex-col gap-2 absolute right-8 top-10 bg-transparent z-index-5'>
         {open &&  routing.locales.map((cur) => (
           <button
@@ -51,7 +51,7 @@ export default function LocaleSwitcher() {
       <button 
       className=" absolute right-2 top-4 " 
       onClick={()=>setOpen(!open)}>
-        <IoIosArrowDown className=''/>
+        <IoIosArrowDown className='fill-[var(--text-color)]'/>
       </button>
     </div>
   );
