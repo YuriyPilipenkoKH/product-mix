@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { navLinks } from '@/data/links';
 import {LogoutButton} from '@/components/Button/logout-button';
 import { GiOrangeSlice } from "react-icons/gi";
-import LocaleSwitcher from '@/components/LocaleSwitcher';
-import ThemeChanger from '@/components/ThemeChanger';
+import LocaleSwitcher from '@/components/Button/LocaleSwitcher';
+import ThemeChanger from '@/components/Button/ThemeChanger';
 
 interface Props {
   children: React.ReactElement<{ session: Session }>; // Specify that children accepts session

@@ -1,55 +1,49 @@
-"use client"
-import ThemeContext, { ThemeTypes } from "@/context/ThemeContext";
-import { useContext, useState } from "react";
-import { FlatBtn } from "./Button";
-import { SlClose } from "react-icons/sl";
-import { HiOutlineLightBulb } from "react-icons/hi2";
-import { FaRegMoon } from "react-icons/fa6";
-import { MdOutlineWaterDrop } from "react-icons/md";
+'use client';
 
-const ThemeChanger = () => {
-  const [open, setOpen] = useState(false)
-  const {theme,  changeTheme} =  useContext(ThemeContext as React.Context<ThemeTypes>)
+import { useState, useEffect } from 'react';
+import { LuLightbulb } from "react-icons/lu";
+import { BsMoonStars } from "react-icons/bs";
+
+export default function ThemeChanger() {
+  const [mounted, setMounted] = useState<boolean>(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    // Initial theme from localStorage (before React mounts)
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme-mix') as 'light' | 'dark';
+      if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        return storedTheme;
+      }
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // Save theme to localStorage and apply it
+    localStorage.setItem('theme-mix', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  if (!mounted) {
+    // Placeholder to avoid layout shift 
+    return  <div className="placeholder w-9 h-9 bg-transparent"></div>
+  }
+
   return (
-    <>
-    {open ? (
-      <div className="theme-changer flex flex-col gap-1  ">
-        <button
-         className="btn"
-         onClick={()=>changeTheme('light')}
-        >
-          light
-          </button>
-        <button
-         className="btn"
-         onClick={()=>changeTheme('dark')}
-        >
-          dark
-          </button>
-        <button
-         className="btn"
-         onClick={()=>changeTheme('aqua')}
-        >
-          aqua
-          </button>
-
-          <FlatBtn 
-          className="close-theme absolute top-[-8px] right-[-8px]"
-          onClick={()=>setOpen(!open)}>
-          <SlClose />
-          </FlatBtn>
-      </div>
-    ) : (
-      <div>
-        <button onClick={()=>setOpen(!open)}>
-          {theme === 'light' && <HiOutlineLightBulb/>}
-          {theme === 'dark' && <FaRegMoon/>}
-          {theme === 'aqua' && <MdOutlineWaterDrop/>}
-        </button>
-      </div>
-    )}
-    </>
-  )
+    <button
+      className="btn btn-ghost text-[var(--text-color)]"
+      onClick={toggleTheme}
+      aria-label="Toggle Theme"
+    >
+      {theme === 'light' ? <LuLightbulb /> : <BsMoonStars />}
+    </button>
+  );
 }
-
-export default ThemeChanger

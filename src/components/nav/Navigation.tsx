@@ -1,9 +1,10 @@
 // import {useTranslations} from 'next-intl';
 import NavigationLink from './NavigationLink';
-import LocaleSwitcher from './LocaleSwitcher';
+import LocaleSwitcher from '../Button/LocaleSwitcher';
 import { getTranslations } from 'next-intl/server';
 import { auth } from '@/auth';
-import ThemeChanger from './ThemeChanger';
+import ThemeChanger from '../Button/ThemeChanger';
+
 
 type Props = {
   locale: string;

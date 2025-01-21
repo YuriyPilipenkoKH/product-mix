@@ -1,4 +1,4 @@
-import Navigation from '@/components/Navigation';
+import Navigation from '@/components/nav/Navigation';
 import React, { ReactNode, isValidElement, cloneElement } from 'react';
 interface Props {
     children: ReactNode;

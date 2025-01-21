@@ -3,7 +3,7 @@ import {Inter} from 'next/font/google';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import {ReactNode} from 'react';
-import Navigation from './Navigation';
+import Navigation from './nav/Navigation';
 import { Toaster } from 'react-hot-toast';
 import { options } from '@/lib/hotToast';
 import { SessionProvider } from 'next-auth/react';
