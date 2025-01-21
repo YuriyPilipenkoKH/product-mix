@@ -62,7 +62,8 @@
     }
    },
    "SocialLogin": {
-    "title": "LogIn with"
+    "title": "LogIn with",
+    "loading": "Loading...."
   },
   "ZodErrors": {
     "name": {

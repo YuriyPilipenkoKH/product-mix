@@ -62,7 +62,8 @@
     }
   },
   "SocialLogin": {
-    "title": "Увійти з"
+    "title": "Увійти з",
+    "loading": "Завантаження...."
   },
   "ZodErrors": {
     "name": {

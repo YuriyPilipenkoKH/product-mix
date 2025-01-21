@@ -29,7 +29,7 @@ const SignInButton = ({provider}:SignInButtonProps) => {
             : <GrGithub className='h-5 w-5' />
             }
       </button>
-      <p>{isPending ? "Loading..." : message}</p>
+      <p>{isPending ? t('loading') : message}</p>
     </form>
     )
 
