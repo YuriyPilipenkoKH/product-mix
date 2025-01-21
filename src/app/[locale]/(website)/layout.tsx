@@ -72,8 +72,8 @@ interface Props {
           <form>
             <div className="relative">
               <input
-                className="input input-bordered bg-gray-100/60 md:w-[200px]"
-                placeholder="Search orders..."
+                className="input input-bordered bg-transparent md:w-[200px] border-1 text-[var(--text-color)]"
+                placeholder="Search ..."
                 type="search"
               />
             </div>
