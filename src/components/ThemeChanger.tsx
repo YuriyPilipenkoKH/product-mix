@@ -33,16 +33,13 @@ export default function ThemeChanger() {
   };
 
   if (!mounted) {
-    return (
-      <div className="placeholder w-9 h-9 bg-transparent">
-        {/* Placeholder to avoid layout shift */}
-      </div>
-    );
+    // Placeholder to avoid layout shift 
+    return  <div className="placeholder w-9 h-9 bg-transparent"></div>
   }
 
   return (
     <button
-      className="btn btn-ghost"
+      className="btn btn-ghost text-[var(--text-color)]"
       onClick={toggleTheme}
       aria-label="Toggle Theme"
     >
