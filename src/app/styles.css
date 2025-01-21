@@ -113,8 +113,9 @@ img {
   @apply py-0 px-3 leading-3;
 
 }
-.Mselect{
-  
-}
 
 
+.Mselect  option {
+      background-color: transparent !important;
+      color: vat(--text-color);
+    }
