@@ -24,7 +24,7 @@ interface AuthFormProps {
 }
 
 const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
-  const d = useTranslations('AuthForm');
+  const af = useTranslations('AuthForm');
   const t = useTranslations('ZodErrors');
   const LoginSchema = getLoginSchema(t);
   const RegisterSchema = getRegisterSchema(t);
@@ -82,8 +82,8 @@ const AuthForm:React.FC<AuthFormProps> = ({formProps}) => {
     }
     if (signInResponse?.ok){
       toast.success( (formName === 'loginForm')
-       ?  `Welcome back, ${capitalize(userName)}! `         
-       :  `${capitalize(userName)}, your registration was successful! `       
+       ?  `${af('login.success')} ${capitalize(userName)}! `         
+       :  `${capitalize(userName)}, ${af('register.success')} `       
       );
     } 
     }
@@ -120,7 +120,7 @@ try {
     const errorMessage =
       error instanceof Error ? error.message : 'An unknown error occurred';
     setLogError(errorMessage);
-    toast.error(`An error occurred: ${errorMessage}`);
+    toast.error(`${t('unexpectedError')}: ${errorMessage}`);
   }
   };
   const handleInputChange =   (field: keyof LogInput | keyof RegInput) => {
@@ -164,7 +164,7 @@ return(
     {...register('name', { onChange: handleInputChange })}
       placeholder=	{( isSubmitting ) 
         ? "Processing" 
-        : d('inputs.name')}
+        : af('inputs.name')}
     />
     </label>
   </>
@@ -178,7 +178,7 @@ return(
   {...register('email', { onChange: handleInputChange })}
     placeholder=	{( isSubmitting ) 
       ? "Processing" 
-      : d('inputs.email')}
+      : af('inputs.email')}
   />
   </label>
   <label 
@@ -194,7 +194,7 @@ return(
        }}
       placeholder={isSubmitting 
         ? "Processing" 
-        : d('inputs.password')}
+        : af('inputs.password')}
       />
   </label>
   <button
@@ -203,7 +203,7 @@ return(
     disabled={isSubmitting || !isDirty || !isValid || !!logError}
         >
     { isLoading  ? "Sending.." : (formName === 'registerForm' )
-      ? d('register.submitButtonLabel')  : d('login.submitButtonLabel')}
+      ? af('register.submitButtonLabel')  : af('login.submitButtonLabel')}
   </button>
     {(isRegisterErrors(errors)  || errors.email || errors.password || logError) && (
       <div className="autherror w-full">
