@@ -81,12 +81,14 @@
     }
   },
   "Register-user": {
+    "requiredFields": "All fields are required.",
     "emailAlreadyRegistered": "Email is already registered.",
     "userRegistered": "User registered successfully.",
     "emailNotAllowed": "Email is not allowed.",
     "unexpectedError": "An unexpected error occurred."
   },
   "Login-user": {
+    "requiredFields": "All fields are required.",
     "userNotFound": "User not found.",
     "invalidLogin": "Invalid login credentials",
     "missingPassword": "Couldn't find password ",

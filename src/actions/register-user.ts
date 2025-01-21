@@ -13,7 +13,7 @@ export async function registerUser (formData: FormData)  {
   const t = await getTranslations( 'Register-user'); 
   const allowedEmails = process.env.ALLOWED_EMAILS?.split(',') || [];
 
-  if (!name || !email || !password) {
+  if (name || !email || !password) {
     throw new Error("All fields are required.");
   }
 

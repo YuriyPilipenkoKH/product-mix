@@ -81,12 +81,14 @@
     }
   },
   "Register-user": {
+    "requiredFields": "Всі поля обов'язкові для заповнення.",
     "emailAlreadyRegistered": "Електронна пошта вже зареєстрована.",
     "userRegistered": "Користувач успішно зареєстрований.",
     "emailNotAllowed": "Електронна пошта не дозволена.",
     "unexpectedError": "Сталася непередбачувана помилка."
   },
   "Login-user": {
+    "requiredFields": "Всі поля обов'язкові для заповнення.",
     "userNotFound": "Користувач не знайдений.",
     "invalidLogin": "Невірний логін або пароль.",
     "missingPassword": "Пароль не знайдено",
