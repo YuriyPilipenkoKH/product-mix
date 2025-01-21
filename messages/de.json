@@ -99,6 +99,7 @@
       "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
     },
     "Logout": {
+      "exit": "Ausloggen",
       "success": "Logout erfolgreich,",
       "fail": "Abmelden fehlgeschlagen. Bitte versuche es erneut."
     },

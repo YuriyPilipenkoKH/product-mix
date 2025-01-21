@@ -99,6 +99,7 @@
     "unexpectedError": "An unexpected error occurred."
   },
   "Logout": {
+    "exit": "Logout",
     "success": "Logout successful,",
     "fail": "Failed to log out. Please try again."
   },
