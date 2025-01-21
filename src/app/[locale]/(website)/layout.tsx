@@ -9,6 +9,7 @@ import {LogoutButton} from '@/components/Button/logout-button';
 import { GiOrangeSlice } from "react-icons/gi";
 import LocaleSwitcher from '@/components/Button/LocaleSwitcher';
 import ThemeChanger from '@/components/Button/ThemeChanger';
+import SearchBar from '@/components/forms/SearchBar';
 
 interface Props {
   children: React.ReactElement<{ session: Session }>; // Specify that children accepts session
@@ -69,15 +70,7 @@ interface Props {
         <div className="ml-auto flex items-center gap-4">
           <ThemeChanger/>
           <LocaleSwitcher  />
-          <form>
-            <div className="relative">
-              <input
-                className="input input-bordered bg-transparent md:w-[200px] border-1 text-[var(--text-color)]"
-                placeholder="Search ..."
-                type="search"
-              />
-            </div>
-          </form>
+          <SearchBar />
           <button className="btn btn-primary rounded-full">
             <Image
               alt="Avatar"
