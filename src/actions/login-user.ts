@@ -14,7 +14,7 @@ export const loginUser = async(formData: FormData) => {
   const password = formData.get('password') as string | null;
 
   if ( !email || !password ) {
-    throw new Error("All fields are required.");
+    throw new Error(t("requiredFields"));
   }
     try {
       await connectMongoDB();
