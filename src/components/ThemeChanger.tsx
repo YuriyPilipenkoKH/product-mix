@@ -5,17 +5,23 @@ import { LuLightbulb } from "react-icons/lu";
 import { BsMoonStars } from "react-icons/bs";
 
 export default function ThemeChanger() {
-  const [mounted, setMounted] = useState<boolean>(false)
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState<boolean>(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    // Initial theme from localStorage (before React mounts)
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme-mix') as 'light' | 'dark';
+      if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        return storedTheme;
+      }
+    }
+    return 'light';
+  });
 
   useEffect(() => {
-    setMounted(true)
-    const storedTheme = localStorage.getItem('theme-mix') as 'light' | 'dark';
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.documentElement.setAttribute('data-theme', storedTheme);
-    }
+    setMounted(true);
   }, []);
+
   useEffect(() => {
     // Save theme to localStorage and apply it
     localStorage.setItem('theme-mix', theme);
@@ -26,10 +32,13 @@ export default function ThemeChanger() {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  if (!mounted) return (
-    <div className='placeholder w-9 h-9 bg-transparent'>
-    </div>
-  )
+  if (!mounted) {
+    return (
+      <div className="placeholder w-9 h-9 bg-transparent">
+        {/* Placeholder to avoid layout shift */}
+      </div>
+    );
+  }
 
   return (
     <button
@@ -37,7 +46,7 @@ export default function ThemeChanger() {
       onClick={toggleTheme}
       aria-label="Toggle Theme"
     >
-      {theme === 'light' ? <LuLightbulb /> :  <BsMoonStars/>}
+      {theme === 'light' ? <LuLightbulb /> : <BsMoonStars />}
     </button>
   );
 }

@@ -164,7 +164,7 @@ return(
     {...register('name', { onChange: handleInputChange })}
       placeholder=	{( isSubmitting ) 
         ? "Processing" 
-        : d('register.inputs.name')}
+        : d('inputs.name')}
     />
     </label>
   </>
@@ -178,7 +178,7 @@ return(
   {...register('email', { onChange: handleInputChange })}
     placeholder=	{( isSubmitting ) 
       ? "Processing" 
-      : d('register.inputs.email')}
+      : d('inputs.email')}
   />
   </label>
   <label 
@@ -194,7 +194,7 @@ return(
        }}
       placeholder={isSubmitting 
         ? "Processing" 
-        : d('register.inputs.password')}
+        : d('inputs.password')}
       />
   </label>
   <button
