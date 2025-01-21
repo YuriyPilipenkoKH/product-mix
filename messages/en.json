@@ -12,7 +12,8 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, de {DE} en {EN} ua {UA} other {Unknown}}"
+    "locale": "{locale, select, de {DE} en {EN} ua {UA} other {Unknown}}",
+    "current": "EN"
   },
   "Manifest": {
     "name": "Product Mix"

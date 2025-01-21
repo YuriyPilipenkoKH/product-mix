@@ -115,7 +115,19 @@ img {
 }
 
 
-.Mselect  option {
+.Mselect-selected {
+  background-color: rgb(30, 255, 90);
+}
+
+
+.Mselect>option {
       background-color: transparent !important;
-      color: vat(--text-color);
+      color: vat(--text-red);
     }
+.Mselect-items div,.Mselect-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
