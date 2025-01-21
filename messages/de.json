@@ -83,6 +83,12 @@
         "requirements": "Großbuchstaben und Zahlen enthalten"
       }
     },
+    "Register-user": {
+      "emailAlreadyRegistered": "E-Mail ist bereits registriert.",
+      "userRegistered": "Benutzer erfolgreich registriert.",
+      "emailNotAllowed": "E-Mail ist nicht erlaubt.",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
+    },
     "PathnamesPage": {
       "description": "<p>Auch die Pfadnamen sind internationalisiert.</p><p>Wenn du die Standardsprache Englisch verwendest, siehst du <code>/en/pathnames</code> in der Adressleiste des Browsers auf dieser Seite.</p><p>Wenn du die Sprache auf Deutsch änderst, wird die URL entsprechend lokalisiert (<code>/de/pfadnamen</code>).</p>",
       "title": "Pfadnamen"
