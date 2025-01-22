@@ -37,7 +37,7 @@ export default function LocaleSwitcher() {
       >
         <span className='text-[var(--text-color)]'>{locale}</span>
       <div 
-      className={clsx('flex flex-col gap-2 absolute left-0  top-12 bg-transparent   z-index-5 ',
+      className={clsx('flex flex-col gap-2 absolute left-0  top-14 bg-transparent   z-index-5 ',
         open ? 'p-2' : 'p-0'
       )}
       >
