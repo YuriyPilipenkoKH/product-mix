@@ -22,15 +22,15 @@ interface Props {
    const activeLink = '/dashboard';
   return (
     <div className="flex min-h-screen w-full">
-    <div className="hidden w-80 border-r lg:block">
-      <div className="flex h-full flex-col gap-2">
+    <div className="hidden w-80  lg:block">
+      <div className="flex h-full flex-col ">
         <div className="flex h-14 items-center border-b px-4">
           <Link className="flex items-center gap-2 font-semibold text-[var(--text-color)] hover:text-[var(--yellow)] cursor-pointer" href="/">
             <GiOrangeSlice className="h-6 w-6" />
             <span className="">Product Mix</span>
           </Link>
         </div>
-        <div className="flex-1 overflow-auto py-2">
+        <div className="flex-1 overflow-auto py-4 border-r ">
           <nav className="grid items-start gap-2 px-4 text-sm font-medium">
             {navLinks.map((link) => (
               <Link
@@ -52,7 +52,7 @@ interface Props {
             ))}
           </nav>
         </div>
-        <div className="border-t py-4 px-1">
+        <div className="border-t py-4 px-1 border-r">
           <LogoutButton username={session?.user?.name || 'Dude'} />
         </div>
       </div>
