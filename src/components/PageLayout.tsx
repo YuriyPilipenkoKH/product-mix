@@ -11,15 +11,15 @@ export default function PageLayout({children, title}: Props) {
   const t = useTranslations('PageLayout');
 
   return (
-    <div className="relative flex grow flex-col  bg-slate-850 py-36">
+    <div className="relative flex grow flex-col  bg-slate-850 py-36 text-[var(--text-color)]">
       <div className="absolute inset-0 overflow-hidden">
         <div className="custom-gradient" />
       </div>
       <div className="container relative flex grow flex-col items-center px-4">
-        <h1 className="text-3xl font-semibold leading-tight tracking-tight text-white md:text-5xl">
+        <h1 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
           {title}
         </h1>
-        <div className="mt-6 text-gray-400 md:text-lg">{children}</div>
+        <div className="mt-6  md:text-lg">{children}</div>
       </div>
     </div>
   );
